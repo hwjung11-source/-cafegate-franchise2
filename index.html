@@ -3407,6 +3407,13 @@ async function submitForm() {
   });
   if (!ok) { alert('필수 항목을 입력해주세요.'); return; }
 
+  console.log('f_region:', r.value);
+  console.log('f_budget:', b.value);
+  console.log('f_name:', n.value);
+  console.log('f_tel:', t.value);
+  console.log('f_source:', document.getElementById('f_source').value);
+  console.log('f_msg:', document.getElementById('f_msg').value);
+
   const formData = {
     name:    n.value,
     phone:   t.value,
