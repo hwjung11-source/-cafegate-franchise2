@@ -2014,7 +2014,10 @@ h1, h2, h3 { letter-spacing: -0.03em; line-height: 1.25; }
 .success-overlay {
   display: none;
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(255, 240, 245, 0.88);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -3321,7 +3324,7 @@ h1, h2, h3 { letter-spacing: -0.03em; line-height: 1.25; }
     <h2 class="success-title">신청이 완료됐습니다!</h2>
     <p class="success-desc">담당자가 확인 후 <strong>영업일 1일 이내</strong>로 연락드립니다.</p>
     <p class="success-desc-sub">그 전에 손익 구조를 미리 확인해두시면 상담이 더 풍부해집니다.</p>
-    <button class="success-close" onclick="document.getElementById('successOverlay').classList.remove('show')">닫기</button>
+    <button class="success-close" onclick="document.getElementById('successOverlay').classList.remove('show'); document.body.style.overflow = '';">닫기</button>
   </div>
 </div>
 
@@ -3438,6 +3441,7 @@ async function submitForm() {
       mode: 'no-cors'
     });
     document.getElementById('successOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
   } catch (err) {
     alert('오류가 발생했습니다. 다시 시도해주세요.');
   }
