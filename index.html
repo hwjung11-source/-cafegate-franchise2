@@ -3389,7 +3389,7 @@ document.addEventListener('click', (e) => {
 });
 
 /* 폼 제출 (Google Apps Script 웹훅) */
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzyInSjc0rLwhdwoHSB_-m-B4YCHl-fOCJeU2yQO5MWyDCJnUH8fT6Dc9tCem5QjwwV/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzMbHh0mH0_2RlFBQ84FKFfZOOj_7lC8F89D3yMNHOqBhaOWTFJoZ0WuE0Cxt_ns3At/exec';
 
 async function submitForm() {
   const r = document.getElementById('f_region');
@@ -3417,14 +3417,20 @@ async function submitForm() {
   };
 
   try {
-    await fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify(formData)
+    const params = new URLSearchParams({
+      name:    formData.name,
+      phone:   formData.phone,
+      region:  formData.region,
+      budget:  formData.budget,
+      channel: formData.channel,
+      message: formData.message
+    });
+
+    await fetch(SCRIPT_URL + '?' + params.toString(), {
+      method: 'GET',
+      mode: 'no-cors'
     });
     document.getElementById('successOverlay').classList.add('show');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   } catch (err) {
     alert('오류가 발생했습니다. 다시 시도해주세요.');
   }
