@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>신청 완료 - 카페게이트</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      background: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 360px;
+      width: 100%;
+      animation: fadeUp 0.5s ease;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .check-circle {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FF2B5E, #FF6B8A);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      box-shadow: 0 8px 28px rgba(255, 43, 94, 0.35);
+    }
+
+    .check-circle svg {
+      width: 42px;
+      height: 42px;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+
+    .desc {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+
+    .desc strong {
+      color: #FF2B5E;
+      font-weight: 700;
+    }
+
+    .sub {
+      font-size: 13px;
+      color: #999;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .btn-home {
+      display: inline-block;
+      background: linear-gradient(135deg, #FF2B5E, #FF6B8A);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      padding: 15px 48px;
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(255, 43, 94, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-home:active {
+      transform: scale(0.97);
+    }
+
+    .logo {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      font-size: 14px;
+      font-weight: 800;
+      color: #1a1a1a;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo">♥ CAFE GATE</div>
+
+  <div class="container">
+    <div class="check-circle">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M5 13l4 4L19 7"
+          stroke="white"
+          stroke-width="2.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <h1>신청이 완료됐습니다!</h1>
+
+    <p class="desc">
+      담당자가 확인 후<br>
+      <strong>영업일 1일 이내</strong>로 연락드립니다.
+    </p>
+    <p class="sub">
+      그 전에 손익 구조를 미리 확인해두시면<br>
+      상담이 더 풍부해집니다.
+    </p>
+
+    <a href="index.html" class="btn-home">홈으로 돌아가기</a>
+  </div>
+
+</body>
+</html>
