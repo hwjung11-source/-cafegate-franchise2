@@ -2152,7 +2152,7 @@ h1, h2, h3 { letter-spacing: -0.03em; line-height: 1.25; }
       커피와 샌드위치로 증명된 성공모델입니다.
     </p>
     <div class="hero-btns">
-      <a href="#apply-form" class="btn-main" onclick="document.getElementById('apply-form').scrollIntoView({behavior:'smooth'})">무료 창업상담 신청</a>
+      <a href="#apply-form" class="btn-main" onclick="event.preventDefault(); document.getElementById('apply-form').scrollIntoView({behavior:'smooth', block:'start'});">무료 창업상담 신청</a>
       
     </div>
   </div>
