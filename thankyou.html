@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>신청 완료 - 카페게이트</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
@@ -26,8 +31,15 @@
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .check-circle {
@@ -84,29 +96,18 @@
       font-size: 15px;
       font-weight: 700;
       box-shadow: 0 4px 16px rgba(255, 43, 94, 0.3);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .btn-home:active {
-      transform: scale(0.97);
     }
   </style>
 </head>
-<body>
 
+<body>
   <div class="container">
     <div class="check-circle">
       <svg viewBox="0 0 24 24" fill="none">
-        <path d="M5 13l4 4L19 7"
-          stroke="white"
-          stroke-width="2.8"
-          stroke-linecap="round"
-          stroke-linejoin="round"/>
+        <path d="M5 13l4 4L19 7" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
     </div>
-
     <h1>신청이 완료됐습니다!</h1>
-
     <p class="desc">
       담당자가 확인 후<br>
       <strong>영업일 1일 이내</strong>로 연락드립니다.
@@ -115,9 +116,8 @@
       그 전에 손익 구조를 미리 확인해두시면<br>
       상담이 더 풍부해집니다.
     </p>
-
     <a href="https://cafegate.co.kr/franchise" class="btn-home" target="_top">홈으로 돌아가기</a>
   </div>
-
 </body>
+
 </html>
