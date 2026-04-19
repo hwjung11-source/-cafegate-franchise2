@@ -3351,5 +3351,11 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
+
+<script>
+  window.addEventListener('load', function() {
+    window.parent.postMessage({ height: document.body.scrollHeight }, '*');
+  });
+</script>
 </body>
 </html>
