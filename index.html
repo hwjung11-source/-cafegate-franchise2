@@ -3388,8 +3388,10 @@ document.addEventListener('click', (e) => {
   }
 });
 
-/* 폼 제출 */
-function submitForm() {
+/* 폼 제출 (Google Apps Script 웹훅) */
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzyInSjc0rLwhdwoHSB_-m-B4YCHl-fOCJeU2yQO5MWyDCJnUH8fT6Dc9tCem5QjwwV/exec';
+
+async function submitForm() {
   const r = document.getElementById('f_region');
   const b = document.getElementById('f_budget');
   const n = document.getElementById('f_name');
@@ -3404,8 +3406,28 @@ function submitForm() {
     if (!el.value.trim()) ok = false;
   });
   if (!ok) { alert('필수 항목을 입력해주세요.'); return; }
-  document.getElementById('successOverlay').classList.add('show');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const formData = {
+    name:    n.value,
+    phone:   t.value,
+    region:  r.value,
+    budget:  b.value,
+    channel: document.getElementById('f_source').value,
+    message: document.getElementById('f_msg').value
+  };
+
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+    document.getElementById('successOverlay').classList.add('show');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (err) {
+    alert('오류가 발생했습니다. 다시 시도해주세요.');
+  }
 }
 
 /* 스크롤 reveal */
