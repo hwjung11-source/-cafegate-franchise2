@@ -3804,7 +3804,7 @@ body { padding-bottom: 74px; }
   </div>
 </section>
 
-<!-- ══ PC STICKY BOTTOM BAR ══ -->
+<!-- ══ STICKY BOTTOM BAR (iframe 임베드 시에는 부모 페이지가 자체 floating bar 제공하므로 숨김) ══ -->
 <div class="sticky-bar" id="stickyBar">
   <div class="sticky-bar-inner">
     <div class="sticky-bar-tel">
@@ -4009,6 +4009,19 @@ async function submitStickyBar() {
   } catch (err) {
     alert('오류가 발생했습니다. 다시 시도해주세요.');
   }
+}
+
+/* iframe 임베드 시 sticky-bar 숨김 (부모 페이지가 자체 floating bar 제공) */
+try {
+  if (window.self !== window.top) {
+    const sb = document.getElementById('stickyBar');
+    if (sb) sb.style.display = 'none';
+    document.body.style.paddingBottom = '0';
+  }
+} catch (e) {
+  const sb = document.getElementById('stickyBar');
+  if (sb) sb.style.display = 'none';
+  document.body.style.paddingBottom = '0';
 }
 
 /* TOP 버튼 */
