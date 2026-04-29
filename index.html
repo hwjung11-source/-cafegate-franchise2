@@ -2159,96 +2159,111 @@ h1, h2, h3 { letter-spacing: -0.03em; line-height: 1.25; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* ══════════════════════════════════════════
-   PC STICKY BOTTOM BAR (1024px 이상에서만)
+   STICKY BOTTOM BAR (전 화면 floating 고정)
 ══════════════════════════════════════════ */
-@media (min-width: 1024px) {
-  .sticky-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #ffffff;
-    z-index: 9000;
-    box-shadow: 0 -2px 20px rgba(0,0,0,0.10);
-    padding: 14px 0;
-    border-top: 1px solid #eeeeee;
-  }
-  .sticky-bar-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 40px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .sticky-bar-tel {
-    font-size: 14px;
-    font-weight: 800;
-    color: #111111;
-    white-space: nowrap;
-    letter-spacing: -0.01em;
-    margin-right: 8px;
-  }
-  .sticky-bar-tel span {
-    font-size: 22px;
-    letter-spacing: -0.02em;
-    color: var(--primary);
-  }
-  .sticky-bar input,
-  .sticky-bar select {
-    height: 44px;
-    border: 1.5px solid #e8e4de;
-    border-radius: 8px;
-    background: #f7f5f2;
-    color: #111;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 0 14px;
-    outline: none;
-    flex: 1;
-    min-width: 0;
-    letter-spacing: -0.02em;
-    -webkit-appearance: none;
-    appearance: none;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .sticky-bar input::placeholder { color: #aaaaaa; }
-  .sticky-bar select {
-    cursor: pointer;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23aaaaaa' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    padding-right: 32px;
-    background-color: #f7f5f2;
-  }
-  .sticky-bar select option { color: #111; background: #fff; }
-  .sticky-bar input:focus,
-  .sticky-bar select:focus {
-    border-color: var(--primary);
-    background: #fff;
-  }
-  .sticky-bar-btn {
-    height: 44px;
-    padding: 0 24px;
-    background: var(--primary);
-    color: #fff;
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 800;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    white-space: nowrap;
-    flex-shrink: 0;
-    letter-spacing: -0.02em;
-    transition: background 0.2s, transform 0.15s;
-  }
-  .sticky-bar-btn:hover { background: #e0224f; transform: translateY(-1px); }
-  body { padding-bottom: 74px; }
+.sticky-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  z-index: 9000;
+  box-shadow: 0 -2px 20px rgba(0,0,0,0.10);
+  padding: 14px 0;
+  border-top: 1px solid #eeeeee;
 }
+.sticky-bar-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sticky-bar-tel {
+  font-size: 14px;
+  font-weight: 800;
+  color: #111111;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  margin-right: 8px;
+}
+.sticky-bar-tel span {
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+}
+.sticky-bar input,
+.sticky-bar select {
+  height: 44px;
+  border: 1.5px solid #e8e4de;
+  border-radius: 8px;
+  background: #f7f5f2;
+  color: #111;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0 14px;
+  outline: none;
+  flex: 1;
+  min-width: 0;
+  letter-spacing: -0.02em;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.sticky-bar input::placeholder { color: #aaaaaa; }
+.sticky-bar select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23aaaaaa' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+  background-color: #f7f5f2;
+}
+.sticky-bar select option { color: #111; background: #fff; }
+.sticky-bar input:focus,
+.sticky-bar select:focus {
+  border-color: var(--primary);
+  background: #fff;
+}
+.sticky-bar-btn {
+  height: 44px;
+  padding: 0 24px;
+  background: var(--primary);
+  color: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+  transition: background 0.2s, transform 0.15s;
+}
+.sticky-bar-btn:hover { background: #e0224f; transform: translateY(-1px); }
+body { padding-bottom: 74px; }
+
+/* 모바일/태블릿: 컴팩트 버전 (전화번호 + 상담신청 버튼) */
 @media (max-width: 1023px) {
-  .sticky-bar { display: none !important; }
+  .sticky-bar { padding: 10px 0; }
+  .sticky-bar-inner { padding: 0 16px; gap: 10px; }
+  .sticky-bar input,
+  .sticky-bar select { display: none; }
+  .sticky-bar-tel {
+    flex: 1;
+    margin-right: 0;
+    font-size: 13px;
+  }
+  .sticky-bar-tel span { font-size: 18px; }
+  .sticky-bar-btn {
+    height: 42px;
+    padding: 0 20px;
+    font-size: 14px;
+  }
+  body { padding-bottom: 64px; }
 }
 
 /* 혜택 바 */
@@ -3955,6 +3970,17 @@ async function submitForm() {
 
 /* Sticky Bar 폼 제출 */
 async function submitStickyBar() {
+  // 모바일/태블릿: 입력칸이 숨겨져 있으므로 상단 신청 폼으로 스크롤
+  if (window.matchMedia('(max-width: 1023px)').matches) {
+    const target = document.getElementById('apply-form');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const focusEl = document.getElementById('f_name');
+      if (focusEl) setTimeout(() => focusEl.focus({ preventScroll: true }), 600);
+    }
+    return;
+  }
+
   const n = document.getElementById('sb_name');
   const t = document.getElementById('sb_tel');
   const r = document.getElementById('sb_region');
