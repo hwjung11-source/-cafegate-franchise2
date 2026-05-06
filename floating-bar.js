@@ -33,12 +33,12 @@
     '#cgFbBar .cg-fb-btn:hover{background:#e0224f;transform:translateY(-1px);}',
     '@media (max-width:1023px){',
     '#cgFbBar{padding:10px 0;}',
-    '#cgFbBar .cg-fb-inner{padding:0 16px;gap:8px;}',
-    '#cgFbBar input,#cgFbBar select{display:none;}',
-    '#cgFbBar .cg-fb-tel{flex:1;margin-right:0;font-size:13px;}',
-    '#cgFbBar .cg-fb-tel span{font-size:18px;}',
-    '#cgFbBar .cg-fb-btn{height:42px;padding:0 18px;font-size:14px;}',
-    'body{padding-bottom:64px !important;}',
+    '#cgFbBar .cg-fb-inner{padding:0 12px;gap:6px;flex-wrap:wrap;}',
+    '#cgFbBar .cg-fb-tel{display:none;}',
+    '#cgFbBar input,#cgFbBar select{height:38px;font-size:13px;padding:0 10px;flex:1 1 calc(50% - 3px);min-width:0;}',
+    '#cgFbBar select{background-position:right 8px center;padding-right:26px;}',
+    '#cgFbBar .cg-fb-btn{height:38px;padding:0 16px;font-size:13px;flex:1 1 100%;}',
+    'body{padding-bottom:130px !important;}',
     '}',
     '@media (min-width:1024px){body{padding-bottom:76px !important;}}'
   ].join('');
@@ -64,11 +64,15 @@
     inner.appendChild(tel);
 
     var name = document.createElement('input');
-    name.type = 'text'; name.id = 'cgFbName'; name.placeholder = '성함';
+    name.type = 'text';
+    name.id = 'cgFbName';
+    name.placeholder = '성함';
     inner.appendChild(name);
 
     var phone = document.createElement('input');
-    phone.type = 'tel'; phone.id = 'cgFbTel'; phone.placeholder = '연락처';
+    phone.type = 'tel';
+    phone.id = 'cgFbTel';
+    phone.placeholder = '연락처';
     inner.appendChild(phone);
 
     var src = document.createElement('select');
@@ -99,7 +103,9 @@
     inner.appendChild(src);
 
     var region = document.createElement('input');
-    region.type = 'text'; region.id = 'cgFbRegion'; region.placeholder = '희망지역';
+    region.type = 'text';
+    region.id = 'cgFbRegion';
+    region.placeholder = '희망지역';
     inner.appendChild(region);
 
     var btn = document.createElement('button');
@@ -112,10 +118,6 @@
     document.body.appendChild(bar);
 
     btn.addEventListener('click', function () {
-      if (window.matchMedia('(max-width: 1023px)').matches) {
-        window.location.href = 'tel:1599-1067';
-        return;
-      }
       var ok = true;
       [name, phone].forEach(function (el) {
         var v = el.value.trim();
@@ -128,16 +130,20 @@
         return;
       }
       var params = new URLSearchParams({
-        name:    name.value.trim(),
-        phone:   phone.value.trim(),
-        region:  region.value.trim() || '미입력',
-        budget:  '미입력',
+        name: name.value.trim(),
+        phone: phone.value.trim(),
+        region: region.value.trim() || '미입력',
+        budget: '미입력',
         channel: src.value || '미입력',
         message: 'sticky bar 신청 (imweb external script)'
       });
       fetch(SCRIPT_URL + '?' + params.toString(), { method: 'GET', mode: 'no-cors' })
-        .then(function () { window.location.href = 'https://cafegate.co.kr/thankyou'; })
-        .catch(function () { alert('오류가 발생했습니다. 다시 시도해주세요.'); });
+        .then(function () {
+          window.location.href = 'https://cafegate.co.kr/thankyou';
+        })
+        .catch(function () {
+          alert('오류가 발생했습니다. 다시 시도해주세요.');
+        });
     });
   }
 
