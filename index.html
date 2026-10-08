@@ -5511,7 +5511,8 @@
       if (window.parent === window) return;
       var last = 0;
       function send() {
-        var h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+        // 실제 내용 높이 (iframe 화면 크기와 무관하게 재야 줄어들 때도 따라감)
+        var h = Math.ceil(document.body.getBoundingClientRect().height);
         if (Math.abs(h - last) < 2) return;
         last = h;
         window.parent.postMessage({ height: h }, '*');
