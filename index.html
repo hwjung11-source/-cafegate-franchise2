@@ -5472,9 +5472,23 @@
   </script>
 
   <script>
-    window.addEventListener('load', function () {
-      window.parent.postMessage({ height: document.body.scrollHeight }, '*');
-    });
+    /* 아임웹 iframe 높이 자동 맞춤: 페이지 길이가 바뀔 때마다 부모(cafegate.co.kr)에 높이 전달 */
+    (function () {
+      if (window.parent === window) return;
+      var last = 0;
+      function send() {
+        var h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+        if (Math.abs(h - last) < 2) return;
+        last = h;
+        window.parent.postMessage({ height: h }, '*');
+      }
+      window.addEventListener('load', send);
+      window.addEventListener('resize', send);
+      document.addEventListener('click', function () { setTimeout(send, 60); });
+      if (window.ResizeObserver) new ResizeObserver(send).observe(document.body);
+      setTimeout(send, 1500);
+      setTimeout(send, 4000);
+    })();
   </script>
 <script>
 (function () {
