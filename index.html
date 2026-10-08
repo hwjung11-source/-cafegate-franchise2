@@ -4092,7 +4092,22 @@
   .profit-net-label span { font-size: 11px !important; }
   .profit-net-val { font-size: 20px !important; }
   .profit-col.ours .profit-net-val { font-size: 26px !important; }
-  .profit .wrap > p[style] { font-size: 12px !important; margin-top: 10px !important; }
+  .profit .wrap > p[style]:not(.section-desc) { font-size: 12px !important; margin-top: 10px !important; }
+
+  /* 손익 시나리오: 탭·카드·표 축소 */
+  .scenario .section-desc[style] { margin-bottom: 20px !important; }
+  .s-tabs { width: 100%; margin-bottom: 16px; padding: 3px; }
+  .s-tab { flex: 1; font-size: 13px; padding: 8px 4px; white-space: nowrap; }
+  .s-card-head { padding: 14px 16px; }
+  .s-card-month { font-size: 12.5px; }
+  .s-card-amt { font-size: 19px; }
+  .s-card-rows { padding: 4px 0; }
+  .s-row { padding: 8px 16px; font-size: 13px; }
+  .s-net { margin: 0 12px 12px; padding: 12px 14px; }
+  .s-net-label { font-size: 12px; }
+  .s-net-rate { font-size: 12px; margin-top: 1px; }
+  .s-net-val { font-size: 23px; }
+  .scenario .wrap > p[style]:not(.section-desc) { font-size: 12px !important; margin-top: 10px !important; }
 
   /* 13년이 증명한 숫자들: 4칸 한 줄 */
   .trust-grid { grid-template-columns: repeat(4, 1fr) !important; margin-top: 24px; }
