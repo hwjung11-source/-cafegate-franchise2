@@ -3568,6 +3568,506 @@
       margin-bottom: 32px;
     }
   </style>
+<style>
+/* ── 모든 스타일은 .cg2-root 안에서만 적용 (아임웹 테마 간섭 차단) ── */
+.cg2-root, .cg2-root *, .cg2-root *::before, .cg2-root *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.cg2-root {
+  --pink:    #FF2F6A;
+  --pink-dk: #E8285D;
+  --pink-sf: #FFF0F4;
+  --pink-ln: #FFD4E0;
+  --paper:   #FFFFFF;
+  --tint:    #F7F5F2;
+  --line:    #E8E4DE;
+  --line-2:  #F1EEE9;
+  --txt:     #16181D;
+  --txt-2:   #5A6070;
+  --txt-3:   #8E949F;
+
+  font-family: 'Pretendard Variable','Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.021em; color: var(--txt);
+  font-size: 16px; line-height: 1.6; background: var(--paper);
+  word-break: keep-all; overflow-wrap: break-word;
+}
+.cg2-root svg { display: block; }
+.cg2-root button { font: inherit; color: inherit; }
+.cg2-root em { font-style: normal; }
+.cg2-root strong { font-weight: 700; }
+
+.cg2-in  { width: 100%; max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+.cg2-sec { padding: 72px 0; }
+.cg2-sec--tint { background: var(--tint); }
+
+/* ── 섹션 헤더 ── */
+.cg2-sh { margin-bottom: 28px; }
+.cg2-eyebrow {
+  display: inline-block; font-size: 12.5px; font-weight: 800;
+  letter-spacing: 0.02em; color: var(--pink); margin-bottom: 10px;
+}
+.cg2-h2 { font-size: clamp(23px, 3.6vw, 32px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.3; }
+.cg2-h2 .pk { color: var(--pink); }
+.cg2-lede { margin-top: 11px; font-size: 15.5px; line-height: 1.68; color: var(--txt-2); max-width: 680px; }
+
+/* ══════════════ 1. 히어로 ══════════════ */
+.cg2-hero { background: var(--tint); padding: 64px 0 60px; border-bottom: 1px solid var(--line); }
+.cg2-hero-grid { display: grid; grid-template-columns: 1fr 352px; gap: 44px; align-items: center; }
+
+.cg2-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12.5px; font-weight: 700; color: var(--pink-dk);
+  background: var(--pink-sf); border: 1px solid var(--pink-ln);
+  padding: 6px 13px 6px 11px; border-radius: 999px;
+}
+.cg2-pill .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--pink); }
+
+.cg2-hero h1 {
+  margin-top: 18px; font-size: clamp(27px, 4.6vw, 42px); font-weight: 800;
+  letter-spacing: -0.04em; line-height: 1.26;
+}
+.cg2-hero h1 em { color: var(--pink); }
+.cg2-hero-sub { margin-top: 14px; font-size: 15px; line-height: 1.7; color: var(--txt-2); }
+.cg2-hero-acts { margin-top: 26px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+/* 히어로 금액 카드 */
+.cg2-pricecard {
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 18px; padding: 20px 22px 16px;
+  box-shadow: 0 18px 44px -24px rgba(22,24,29,0.22);
+}
+/* 개설비용 한 줄 (보조) */
+.cg2-pricecard .pc-cost {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+  padding-bottom: 14px; border-bottom: 1px dashed var(--line);
+}
+.cg2-pricecard .pc-cost .lb { font-size: 13px; font-weight: 700; color: var(--txt-2); }
+.cg2-pricecard .pc-cost .lb span { font-weight: 500; color: var(--txt-3); }
+.cg2-pricecard .pc-cost .vals { display: inline-flex; align-items: baseline; gap: 6px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cg2-pricecard .pc-cost s { font-size: 12.5px; color: var(--txt-3); text-decoration-color: #C9C4BC; }
+.cg2-pricecard .pc-cost .arr { font-size: 12px; color: var(--txt-3); }
+.cg2-pricecard .pc-cost b { font-size: 17px; font-weight: 800; letter-spacing: -0.03em; color: var(--txt); }
+
+/* 지원 헤드 */
+.cg2-pricecard .pc-head {
+  margin: 16px 0 10px; font-size: 15px; font-weight: 800; letter-spacing: -0.03em; color: var(--txt);
+}
+.cg2-pricecard .pc-head small { margin-left: 6px; font-size: 11.5px; font-weight: 600; color: var(--txt-3); }
+
+/* 지원 4줄 */
+.cg2-pricecard .pc-fin {
+  background: var(--pink-sf); border: 1px solid var(--pink-ln);
+  border-radius: 12px; padding: 4px 14px;
+}
+.cg2-pricecard .pc-frow {
+  display: grid; grid-template-columns: 0 58px 1fr auto; align-items: center; gap: 8px;
+  padding: 10px 0; border-bottom: 1px solid rgba(255,47,106,0.13);
+}
+.cg2-pricecard .pc-frow:last-child { border-bottom: none; }
+.cg2-pricecard .pc-frow .op { font-size: 16px; font-weight: 800; color: var(--pink); text-align: center; line-height: 1; }
+.cg2-pricecard .pc-frow .cg2-chip { justify-content: center; }
+.cg2-pricecard .pc-frow .nm { font-size: 12.5px; color: var(--txt-2); font-weight: 600; line-height: 1.35; }
+.cg2-pricecard .pc-frow .v {
+  font-size: 16px; font-weight: 800; color: var(--pink); letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.cg2-chip--cut { background: #fff; color: var(--pink-dk) !important; border: 1px solid var(--pink-ln); }
+
+/* 합계 (가장 큰 숫자) */
+.cg2-pricecard .pc-total .v .mn { margin-right: 2px; }
+.cg2-pricecard .pc-total {
+  margin-top: 14px; display: flex; align-items: baseline; justify-content: flex-end; gap: 8px;
+}
+.cg2-pricecard .pc-total .k { font-size: 16px; font-weight: 800; color: var(--pink-dk); }
+.cg2-pricecard .pc-total .v {
+  font-size: clamp(44px, 6.6vw, 58px); font-weight: 800; letter-spacing: -0.05em; line-height: 1;
+  color: var(--pink); font-variant-numeric: tabular-nums;
+}
+.cg2-pricecard .pc-total .v i { font-style: normal; font-size: 0.38em; font-weight: 800; margin-left: 3px; }
+.cg2-pricecard .foot { margin-top: 12px; font-size: 11px; line-height: 1.6; color: var(--txt-3); }
+
+/* ── 버튼 ── */
+.cg2-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 16px; font-weight: 700; letter-spacing: -0.02em;
+  padding: 15px 23px; border-radius: 999px;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.cg2-btn--pri { background: var(--pink); color: #fff; box-shadow: 0 9px 24px -9px rgba(255,47,106,0.62); }
+.cg2-btn--pri:hover { transform: translateY(-2px); box-shadow: 0 14px 32px -9px rgba(255,47,106,0.74); }
+.cg2-btn--pri .cg2-num { background: rgba(255,255,255,0.22); padding: 5px 11px; border-radius: 999px; font-size: 15px; font-weight: 800; }
+.cg2-btn--out { background: var(--paper); color: var(--txt); border: 1.5px solid var(--line); }
+.cg2-btn--out:hover { border-color: var(--pink-ln); background: var(--pink-sf); color: var(--pink-dk); }
+
+/* ══════════════ 2. 평수 탭 + 비용 표 ══════════════ */
+.cg2-tabs {
+  display: flex; width: 100%; max-width: 520px; margin: 0 auto 18px;
+  background: var(--paper); border: 1.5px solid var(--line); border-radius: 12px; overflow: hidden;
+}
+.cg2-tab {
+  flex: 1 1 0; appearance: none; cursor: pointer;
+  background: transparent; border: none; border-radius: 0;
+  border-right: 1px solid var(--line);
+  padding: 11px 6px; text-align: center; transition: background .15s ease, color .15s ease;
+}
+.cg2-tab:last-child { border-right: none; }
+.cg2-tab .tp { display: block; font-size: 16px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
+.cg2-tab .tl { display: block; font-size: 10.5px; font-weight: 600; color: var(--txt-3); margin-top: 2px; }
+.cg2-tab:hover { background: var(--pink-sf); color: var(--pink-dk); }
+.cg2-tab[aria-selected="true"] { background: var(--pink); color: #fff; border-right-color: var(--pink); }
+.cg2-tab[aria-selected="true"] .tl { color: rgba(255,255,255,0.82); }
+
+.cg2-card { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.cg2-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+.cg2-t { width: 100%; border-collapse: collapse; min-width: 580px; }
+.cg2-t col.ci { width: 16%; } .cg2-t col.cd { width: 46%; }
+.cg2-t col.cb { width: 17%; } .cg2-t col.ca { width: 21%; }
+.cg2-t thead th {
+  background: #FBFAF8; font-size: 12px; font-weight: 700; color: var(--txt-2);
+  padding: 12px 15px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap;
+}
+.cg2-t thead th.n  { text-align: right; }
+.cg2-t thead th.hl { background: var(--pink-sf); color: var(--pink-dk); }
+.cg2-t tbody td { padding: 13px 15px; border-bottom: 1px solid var(--line-2); font-size: 14.5px; vertical-align: middle; }
+.cg2-t .ti { font-weight: 700; white-space: nowrap; }
+.cg2-t .td { font-size: 13px; line-height: 1.58; color: var(--txt-2); }
+.cg2-t .tb {
+  text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums;
+  color: var(--txt-3); font-size: 13.5px; text-decoration: line-through; text-decoration-color: #CFCAC2;
+}
+.cg2-t .tb.same { text-decoration: none; }
+.cg2-t .ta { text-align: right; white-space: nowrap; font-weight: 700; font-variant-numeric: tabular-nums; background: #FFFAFB; }
+.cg2-t tbody tr:hover td { background: #FCFBFA; }
+.cg2-t tbody tr:hover .ta { background: #FFF2F6; }
+.cg2-sav {
+  display: inline-block; margin-left: 6px; vertical-align: 2px;
+  background: var(--pink); color: #fff; font-size: 10.5px; font-weight: 800;
+  padding: 2px 7px; border-radius: 999px;
+}
+.cg2-free { color: var(--pink); font-weight: 800; }
+.cg2-t tr.cg2-sum td {
+  background: var(--pink-sf) !important; border-top: 1px solid var(--pink-ln); border-bottom: none;
+  padding: 17px 15px;
+}
+.cg2-t tr.cg2-sum .ti { font-size: 14.5px; }
+.cg2-t tr.cg2-sum .ti small { font-weight: 500; font-size: 11.5px; color: var(--txt-2); margin-left: 5px; }
+.cg2-t tr.cg2-sum .tb { color: var(--txt-3); }
+.cg2-t tr.cg2-sum .ta {
+  background: transparent !important; color: var(--pink);
+  font-size: 22px; font-weight: 800; letter-spacing: -0.035em;
+}
+.cg2-t tr.cg2-sum .ta i { font-style: normal; font-size: 0.6em; margin-left: 1px; }
+
+/* 개설비용 표: 전 셀 중앙정렬 */
+[data-cg2-panel] .cg2-t thead th,
+[data-cg2-panel] .cg2-t tbody td { text-align: center; }
+
+.cg2-notes { margin-top: 20px; font-size: 12.5px; line-height: 1.9; color: var(--txt-2); }
+
+/* ══════════════ 3. 금융 지원 (축: 개설비용 6,250) ══════════════ */
+.cg2-fin { display: grid; grid-template-columns: 1fr; gap: 14px; }
+
+/* 스택 바: 개설비용 vs 지원 한도 */
+.cg2-stack { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 26px 26px 22px; }
+.cg2-srow + .cg2-srow { margin-top: 20px; }
+.cg2-srow-top {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 10px; margin-bottom: 9px;
+}
+.cg2-srow-lb { font-size: 13.5px; font-weight: 700; color: var(--txt-2); }
+.cg2-srow-vl { font-size: 19px; font-weight: 800; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; }
+.cg2-srow--cost .cg2-srow-vl { color: var(--txt); }
+.cg2-srow--fund .cg2-srow-lb { color: var(--pink-dk); }
+.cg2-srow--fund .cg2-srow-vl { color: var(--pink); }
+
+.cg2-track { display: flex; height: 50px; border-radius: 10px; overflow: hidden; background: var(--line-2); }
+.cg2-seg {
+  width: 0; min-width: 0; display: flex; flex-direction: column; justify-content: center;
+  padding: 0 12px; color: #fff; overflow: hidden; white-space: nowrap;
+  transition: width 1s cubic-bezier(.22,.8,.26,1);
+}
+.cg2-seg .sv { font-size: 15px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.cg2-seg .sk { font-size: 10.5px; font-weight: 600; opacity: .82; line-height: 1.25; margin-top: 1px; }
+.cg2-seg--cost { background: #3C4252; }
+.cg2-seg--rest { background: #9AA0AC; }
+.cg2-seg--hq   { background: var(--pink); }
+.cg2-seg--sam  { background: #2F4BC7; }
+.cg2-seg--hana { background: #00938D; }
+.cg2-seg--pad  { background: transparent; }
+
+.cg2-slegend { margin-top: 10px; font-size: 12px; color: var(--txt-3); line-height: 1.6; }
+
+/* 할인 세그먼트 (정상가에서 빠진 부분) */
+.cg2-seg--disc {
+  background: repeating-linear-gradient(135deg, #FFE3EC 0 7px, #FFF0F4 7px 14px);
+  color: var(--pink-dk); box-shadow: inset 0 0 0 1.5px var(--pink-ln);
+  border-radius: 0 10px 10px 0;
+}
+.cg2-srow-vl .was { font-size: 0.7em; font-weight: 600; color: var(--txt-3); text-decoration-color: #C9C4BC; margin-right: 2px; }
+.cg2-key {
+  display: inline-block; width: 11px; height: 11px; border-radius: 3px; vertical-align: -1px; margin-right: 6px;
+}
+.cg2-key--disc { background: repeating-linear-gradient(135deg, #FFD0DE 0 3px, #FFF0F4 3px 6px); box-shadow: inset 0 0 0 1px var(--pink-ln); }
+
+/* 금융 3카드 */
+.cg2-grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.cg2-fcard { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 22px 20px; }
+.cg2-fcard-top { display: flex; align-items: center; gap: 8px; margin-bottom: 13px; }
+.cg2-chip {
+  display: inline-flex; align-items: center; font-size: 10.5px; font-weight: 800;
+  padding: 4px 8px; border-radius: 5px; white-space: nowrap; color: #fff;
+}
+.cg2-chip--hq { background: var(--pink); }
+.cg2-chip--sam { background: #2F4BC7; }
+.cg2-chip--hana { background: #00938D; }
+.cg2-fcard-nm { font-size: 13px; font-weight: 700; color: var(--txt-2); }
+.cg2-fcard-v { font-size: 29px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+.cg2-fcard-v i { font-style: normal; font-size: 0.44em; font-weight: 700; color: var(--txt-3); margin-left: 2px; }
+.cg2-fcard ul { list-style: none; margin-top: 14px; display: grid; gap: 7px; }
+.cg2-fcard li { position: relative; padding-left: 14px; font-size: 13px; line-height: 1.58; color: var(--txt-2); }
+.cg2-fcard li::before {
+  content: ''; position: absolute; left: 0; top: 7px;
+  width: 4px; height: 4px; border-radius: 50%; background: var(--pink-ln);
+}
+.cg2-fcard--hero { background: var(--pink-sf); border-color: var(--pink-ln); }
+.cg2-fcard--hero .cg2-fcard-v { color: var(--pink); }
+.cg2-fcard--hero li::before { background: var(--pink); }
+
+/* 결론 띠 */
+.cg2-concl {
+  margin-top: 14px; background: var(--paper);
+  border: 1.5px solid var(--pink-ln); border-radius: 16px; padding: 24px 26px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+}
+.cg2-concl .t { font-size: clamp(17px, 2.5vw, 21px); font-weight: 800; letter-spacing: -0.032em; line-height: 1.42; }
+.cg2-concl .t em { color: var(--pink); }
+.cg2-concl .d { margin-top: 8px; font-size: 13.5px; line-height: 1.66; color: var(--txt-2); max-width: 620px; }
+
+.cg2-flow { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.cg2-flow .st {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 13px; color: var(--txt-2); background: var(--tint);
+  border-radius: 999px; padding: 6px 12px 6px 6px;
+}
+.cg2-flow .ar { color: var(--pink); font-weight: 800; font-size: 14px; }
+.cg2-flow .n {
+  width: 20px; height: 20px; border-radius: 50%; background: var(--pink); color: #fff;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;
+}
+.cg2-flow b { color: var(--txt); font-weight: 700; }
+
+/* ══════════════ 4. 타사 비교 ══════════════ */
+.cg2-t--comp { min-width: 700px; }
+.cg2-t--comp col.cc { width: 26%; } .cg2-t--comp col.co { width: 14%; }
+
+/* 전 셀 중앙정렬 */
+.cg2-t--comp thead th, .cg2-t--comp tbody td { text-align: center !important; }
+
+/* 호버 효과 제거 (비교표 전체) */
+.cg2-t--comp tbody tr:hover td { background: inherit; }
+.cg2-t--comp tbody tr:hover td.cgcol { background: var(--pink-sf); }
+.cg2-t--comp tbody tr.cg2-crow:hover td { background: #F6F4F1; }
+.cg2-t--comp tbody tr.cg2-crow:hover td.cgcol { background: #FFE0EA; }
+.cg2-t--comp tbody tr.cg2-crow-final:hover td { background: var(--pink-sf); }
+.cg2-t--comp tbody tr.cg2-crow-final:hover td.cgcol { background: var(--pink); }
+
+/* 카페게이트 헤더: 이름 오른쪽에 별 배지 */
+.cg2-t--comp thead th.cgcol {
+  background: var(--pink); color: #fff; font-size: 15px; font-weight: 800; white-space: nowrap;
+}
+.cg2-t--comp thead th.cgcol .star {
+  display: inline-block; margin-left: 7px; vertical-align: 1px;
+  background: #fff; color: var(--pink);
+  font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 999px; letter-spacing: -0.01em;
+}
+
+.cg2-t--comp td.cgcol {
+  background: var(--pink-sf); font-weight: 700;
+  white-space: nowrap; font-variant-numeric: tabular-nums;
+}
+.cg2-t--comp td.o { white-space: nowrap; color: var(--txt-2); font-variant-numeric: tabular-nums; font-size: 13.5px; }
+.cg2-t--comp tr.cg2-crow td { background: #F6F4F1; font-weight: 700; border-top: 1px solid var(--line); }
+.cg2-t--comp tr.cg2-crow td.cgcol { background: #FFE0EA; color: var(--pink); font-size: 17px; }
+.cg2-t--comp tr.cg2-crow-final td { background: var(--pink-sf); border-bottom: none; }
+.cg2-t--comp tr.cg2-crow-final td.cgcol {
+  background: var(--pink); color: #fff; font-size: 21px; letter-spacing: -0.035em;
+}
+.cg2-t--comp tr.cg2-crow-final td.cgcol .lowest {
+  display: block; font-size: 10.5px; font-weight: 700; color: rgba(255,255,255,0.85); margin-top: 4px; letter-spacing: 0;
+}
+
+/* 총개설비용 줄: 굵은 테두리 박스 + 타사 금액 진하게 */
+.cg2-t--comp tr.cg2-crow-final td {
+  border-top: 2px solid var(--pink) !important;
+  border-bottom: 2px solid var(--pink) !important;
+}
+.cg2-t--comp tr.cg2-crow-final td:first-child { border-left: 2px solid var(--pink); }
+.cg2-t--comp tr.cg2-crow-final td:last-child  { border-right: 2px solid var(--pink); }
+.cg2-t--comp tr.cg2-crow-final td.o {
+  color: var(--txt); font-weight: 800; font-size: 16px; letter-spacing: -0.03em;
+}
+.cg2-t--comp tr.cg2-crow-final td.ti { font-size: 15px; }
+.cg2-card--tip .cg2-scroll { border-radius: 0 0 15px 15px; }
+
+/* 카페게이트 총개설비용 강조 */
+.cg2-t--comp tr.cg2-crow-final td.cgcol { padding-top: 16px; padding-bottom: 18px; }
+.cg2-t--comp tr.cg2-crow-final td.cgcol .big {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 27px; font-weight: 800; letter-spacing: -0.045em; line-height: 1;
+}
+.cg2-t--comp tr.cg2-crow-final td.cgcol .big i { font-style: normal; font-size: 0.52em; font-weight: 700; margin-left: -3px; }
+.cg2-t--comp tr.cg2-crow-final td.cgcol .st {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: #fff; color: var(--pink); font-size: 14px; line-height: 1;
+}
+.cg2-t--comp tr.cg2-crow-final td.cgcol .lowest {
+  display: block; margin-top: 7px; color: #fff;
+  font-size: 12px; font-weight: 700; line-height: 1.4; letter-spacing: -0.01em;
+}
+
+/* 비교표 헤더 평수 기준 표기 */
+.cg2-t--comp thead th small.py { display: block; margin-top: 3px; font-size: 11px; font-weight: 600; opacity: .75; letter-spacing: 0; }
+.cg2-t--comp thead th.cgcol small.py { opacity: .9; }
+
+/* 절감 한 줄 강조 */
+.cg2-save-line { margin-top: 16px; text-align: center; font-size: 18.5px; font-weight: 700; color: var(--txt); letter-spacing: -0.03em; }
+.cg2-save-line b { color: var(--pink); font-weight: 800; }
+.cg2-save-line small { display: block; margin-top: 4px; font-size: 12.5px; font-weight: 600; color: var(--txt-3); }
+
+/* 툴팁 */
+.cg2-tip { position: relative; display: inline-block; margin-left: 5px; vertical-align: 1px; }
+.cg2-tip-btn {
+  appearance: none; cursor: pointer; border: none; padding: 0;
+  width: 16px; height: 16px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.1); color: var(--txt-2); font-size: 10.5px; font-weight: 800; line-height: 1;
+}
+.cg2-tip-btn:hover, .cg2-tip[data-open="1"] .cg2-tip-btn { background: var(--pink); color: #fff; }
+.cg2-tip-body {
+  position: absolute; bottom: calc(100% + 8px); right: -6px;
+  width: max-content; max-width: 215px;
+  background: #22262F; color: #fff; border-radius: 9px; padding: 9px 12px;
+  font-size: 12px; font-weight: 500; line-height: 1.58; text-align: left; white-space: normal;
+  opacity: 0; visibility: hidden; transform: translateY(4px);
+  transition: opacity .14s ease, transform .14s ease, visibility .14s;
+  box-shadow: 0 9px 24px -8px rgba(0,0,0,0.35); z-index: 40;
+}
+.cg2-tip[data-open="1"] .cg2-tip-body { opacity: 1; visibility: visible; transform: translateY(0); }
+.cg2-tip-body::after { content: ''; position: absolute; top: 100%; right: 12px; border: 5px solid transparent; border-top-color: #22262F; }
+.cg2-card--tip { overflow: visible; }
+
+/* ══════════════ 5. 마감 CTA ══════════════ */
+.cg2-final { background: var(--pink-sf); border-top: 1px solid var(--pink-ln); padding: 60px 0; text-align: center; }
+.cg2-final h2 { font-size: clamp(23px, 3.6vw, 33px); font-weight: 800; letter-spacing: -0.036em; line-height: 1.3; }
+.cg2-final h2 em { color: var(--pink); }
+.cg2-final p { margin-top: 13px; font-size: 14.5px; color: var(--txt-2); line-height: 1.7; }
+.cg2-final .cg2-hero-acts { justify-content: center; margin-top: 24px; }
+.cg2-final .cg2-btn--out { border-color: var(--pink-ln); }
+
+/* ══════════════ 아임웹 테마 간섭 보정 ══════════════ */
+/* .doz_sys h1 { 4em } / .doz_sys h2 { 3.214em } 를 덮어씀. 페이지 대제목(48px)보다 작게 유지 */
+.cg2-root h1, .cg2-root h2 {
+  font-family: inherit !important; margin-bottom: 0 !important; padding: 0 !important;
+  letter-spacing: -0.035em !important;
+}
+.cg2-root .cg2-hero h1 { font-size: 34px !important; font-weight: 800 !important; line-height: 1.3 !important; }
+.cg2-root .cg2-h2      { font-size: 27px !important; font-weight: 800 !important; line-height: 1.35 !important; }
+.cg2-root .cg2-final h2 { font-size: 26px !important; font-weight: 800 !important; line-height: 1.35 !important; }
+
+/* 화살표 원 (정중앙 정렬) */
+.cg2-root .cg2-arr {
+  display: inline-flex !important; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 50%; flex: 0 0 28px;
+  background: rgba(255,255,255,0.22); padding: 0 !important; line-height: 0 !important;
+}
+.cg2-root .cg2-arr svg { width: 15px; height: 15px; display: block; }
+
+/* 아임웹 .num / .doz_sys a 충돌 보정 */
+.cg2-root .cg2-num {
+  display: inline-flex !important; align-items: center; width: auto !important; height: auto !important;
+  min-width: 0 !important; border-radius: 999px !important; line-height: 1.2 !important;
+}
+.cg2-root a.cg2-btn--pri, .cg2-root a.cg2-btn--pri:hover, .cg2-root a.cg2-btn--pri:visited { color: #fff !important; text-decoration: none !important; }
+.cg2-root a.cg2-btn--out, .cg2-root a.cg2-btn--out:visited { color: var(--txt) !important; text-decoration: none !important; }
+.cg2-root a.cg2-btn--out:hover { color: var(--pink-dk) !important; }
+
+/* 버튼 안 전화번호가 세로로 깨지지 않게 */
+.cg2-root .cg2-btn, .cg2-root .cg2-btn * { white-space: nowrap !important; word-break: keep-all !important; }
+.cg2-root .cg2-btn { flex-shrink: 0; }
+
+@media (max-width: 768px) {
+  .cg2-root .cg2-hero h1  { font-size: 26px !important; }
+  .cg2-root .cg2-h2       { font-size: 21px !important; }
+  .cg2-root .cg2-final h2 { font-size: 21px !important; }
+}
+
+/* ══════════════ 반응형 ══════════════ */
+@media (max-width: 900px) {
+  .cg2-hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  .cg2-grid3 { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .cg2-in { padding: 0 18px; }
+  .cg2-sec { padding: 52px 0; }
+  .cg2-hero { padding: 48px 0 44px; }
+  .cg2-sh { margin-bottom: 22px; }
+  .cg2-pricecard { padding: 22px 20px 18px; }
+  .cg2-stack { padding: 20px 18px 18px; }
+  .cg2-track { height: 44px; }
+  .cg2-seg { padding: 0 9px; }
+  .cg2-seg .sv { font-size: 13.5px; }
+  .cg2-seg .sk { font-size: 9.5px; }
+  .cg2-t { min-width: 520px; }
+  .cg2-t thead th, .cg2-t tbody td { padding: 11px 11px; }
+  .cg2-t tbody td { font-size: 13.5px; }
+  .cg2-t .td { font-size: 12px; }
+  .cg2-t tr.cg2-sum .ta { font-size: 19px; }
+  .cg2-concl { padding: 20px 20px; }
+  .cg2-final { padding: 48px 0; }
+}
+/* ══════════════ 모바일 보정 (실기기 폭 390px 확인 후) ══════════════ */
+@media (max-width: 768px) {
+  /* 히어로 버튼 두 개를 한 줄에 */
+  .cg2-root .cg2-hero-acts { gap: 8px; flex-wrap: nowrap; }
+  .cg2-root .cg2-hero .cg2-btn { padding: 13px 15px; font-size: 14.5px; gap: 7px; }
+  .cg2-root .cg2-hero .cg2-num { font-size: 13.5px; padding: 4px 9px; }
+  /* 막대 제목줄: 라벨 위 / 금액 아래 */
+  .cg2-root .cg2-srow-top { flex-direction: column; align-items: flex-start; gap: 3px; }
+  .cg2-root .cg2-srow-vl { white-space: nowrap; }
+  /* 할인 빗금 칸은 폭이 좁아 글씨 숨김 (바로 아래 범례가 설명) */
+  .cg2-root .cg2-seg--disc .sv, .cg2-root .cg2-seg--disc .sk { display: none; }
+  /* 상권→매출→상환 흐름: 세로로 */
+  .cg2-root .cg2-flow { flex-direction: column; align-items: stretch; gap: 6px; }
+  .cg2-root .cg2-flow .ar { display: none; }
+  /* 표 좌우 스크롤 안내 */
+  .cg2-root .cg2-scroll-hint { display: block; }
+}
+/* 모바일 개설비용 표 (열 순서 변경판) */
+.cg2-root .cg2-t.cg2-t--mob { table-layout: fixed; width: 708px; min-width: 708px; }
+.cg2-root .cg2-t--mob col.mi { width: 92px; }
+.cg2-root .cg2-t--mob col.mb { width: 96px; }
+.cg2-root .cg2-t--mob col.ma { width: 150px; }
+.cg2-root .cg2-t--mob col.md { width: 370px; }
+.cg2-root .cg2-t--mob .ti { white-space: normal; word-break: keep-all; font-size: 13.5px; }
+.cg2-root .cg2-t--mob .ti small { display: block; margin: 2px 0 0; font-size: 10.5px; }
+.cg2-root .cg2-t--mob .td { text-align: left !important; }
+.cg2-root .cg2-t--mob .ta { font-size: 14px; }
+.cg2-root .cg2-t--mob .cg2-sav { margin-left: 4px; font-size: 10px; padding: 2px 6px; }
+.cg2-root .cg2-t--mob tr.cg2-sum .ta { font-size: 19px; }
+.cg2-root .cg2-t--mob tr.cg2-sum .td { color: var(--txt-3); }
+
+.cg2-scroll-hint { display: none; margin: 0 0 8px; font-size: 12px; color: var(--txt-3); text-align: right; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cg2-root *, .cg2-root *::before, .cg2-root *::after { transition-duration: .01ms !important; }
+}
+
+/* ── /franchise 페이지 안에 넣을 때 보정 ── */
+.cg2-root.cg2-embed { background: transparent; margin-top: 40px; }
+.cost-sec.alt .cg2-root.cg2-embed { background: transparent; }
+</style>
 </head>
 
 <body>
@@ -4100,6 +4600,174 @@
   <div class="divider"></div>
 
   <!-- ══ 08. 원가 경쟁력 ══ -->
+<style>
+.cg4 {
+  --pink: #FF2F6A; --pink-dk: #E8285D; --pink-sf: #FFF0F4; --pink-ln: #FFD4E0;
+  --line: #EDE6E1; --txt: #111111; --txt-2: #444444; --txt-3: #8E949F;
+  background: linear-gradient(180deg, #FFF7F9 0%, #FFFFFF 100%);
+  padding: 120px 0; font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
+  color: var(--txt); word-break: keep-all; letter-spacing: -0.02em;
+}
+.cg4 *, .cg4 *::before, .cg4 *::after { box-sizing: border-box; }
+.cg4 em { font-style: normal; }
+.cg4-in { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+
+/* 헤더 (페이지 기존 섹션과 동일 규격) */
+.cg4-eyebrow { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 700; color: var(--pink); letter-spacing: 0.1em; }
+.cg4-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--pink); }
+.cg4-title { margin: 16px 0 0; font-size: 48px; font-weight: 800; line-height: 1.25; letter-spacing: -0.03em; }
+.cg4-title em { color: var(--pink); }
+.cg4-desc { margin: 20px 0 0; font-size: 19px; line-height: 1.75; color: var(--txt-2); max-width: 640px; }
+
+.cg4-grid { margin-top: 56px; display: grid; grid-template-columns: 420px 1fr; gap: 40px; align-items: stretch; }
+
+/* 왼쪽: 지원 카드 */
+.cg4-card {
+  background: #fff; border: 1px solid var(--line); border-radius: 20px;
+  padding: 28px 28px 22px; box-shadow: 0 24px 60px -32px rgba(232,40,93,0.35);
+  display: flex; flex-direction: column;
+}
+.cg4-cost { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding-bottom: 16px; border-bottom: 1px dashed var(--line); }
+.cg4-cost .lb { font-size: 14px; font-weight: 700; color: var(--txt-2); }
+.cg4-cost .lb span { font-weight: 500; color: var(--txt-3); }
+.cg4-cost .vals { white-space: nowrap; display: inline-flex; align-items: baseline; gap: 7px; }
+.cg4-cost s { font-size: 13px; color: var(--txt-3); }
+.cg4-cost b { font-size: 19px; font-weight: 800; letter-spacing: -0.03em; }
+.cg4-head { margin: 18px 0 10px; font-size: 16px; font-weight: 800; }
+.cg4-head small { margin-left: 6px; font-size: 12px; font-weight: 600; color: var(--txt-3); }
+.cg4-fin { background: var(--pink-sf); border: 1px solid var(--pink-ln); border-radius: 14px; padding: 4px 16px; }
+.cg4-row { display: grid; grid-template-columns: 64px 1fr auto; gap: 10px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,47,106,0.13); }
+.cg4-row:last-child { border-bottom: none; }
+.cg4-row .nm { font-size: 13.5px; font-weight: 600; color: var(--txt-2); line-height: 1.35; }
+.cg4-row .v { font-size: 17px; font-weight: 800; color: var(--pink); white-space: nowrap; letter-spacing: -0.03em; }
+.cg4-chip { display: inline-flex; justify-content: center; font-size: 11px; font-weight: 800; padding: 4px 6px; border-radius: 5px; color: #fff; white-space: nowrap; }
+.cg4-chip--cut { background: #fff; color: var(--pink-dk); border: 1px solid var(--pink-ln); }
+.cg4-chip--hq { background: var(--pink); }
+.cg4-chip--sam { background: #2F4BC7; }
+.cg4-chip--hana { background: #00938D; }
+.cg4-total { margin-top: auto; padding-top: 18px; display: flex; justify-content: flex-end; align-items: baseline; gap: 8px; }
+.cg4-total .k { font-size: 17px; font-weight: 800; color: var(--pink-dk); }
+.cg4-total .v { font-size: 60px; font-weight: 800; letter-spacing: -0.05em; line-height: 1; color: var(--pink); white-space: nowrap; }
+.cg4-total .v i { font-style: normal; font-size: 0.36em; margin-left: 3px; }
+.cg4-foot { margin-top: 12px; font-size: 11.5px; line-height: 1.6; color: var(--txt-3); }
+
+/* 오른쪽: 3단계 */
+.cg4-steps { display: flex; flex-direction: column; gap: 14px; }
+.cg4-step {
+  position: relative; flex: 1; background: #fff; border: 1px solid var(--line); border-radius: 18px;
+  padding: 24px 26px 24px 92px; display: flex; flex-direction: column; justify-content: center;
+}
+.cg4-step .no {
+  position: absolute; left: 26px; top: 50%; transform: translateY(-50%);
+  width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  background: var(--pink-sf); color: var(--pink); font-size: 15px; font-weight: 800; letter-spacing: 0;
+}
+.cg4-step .t { font-size: 21px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.35; }
+.cg4-step .t em { color: var(--pink); }
+.cg4-step .d { margin-top: 6px; font-size: 15px; line-height: 1.65; color: var(--txt-2); }
+.cg4-step--hot { background: var(--pink); border-color: var(--pink); color: #fff; box-shadow: 0 18px 40px -20px rgba(255,47,106,0.7); }
+.cg4-step--hot .no { background: rgba(255,255,255,0.22); color: #fff; }
+.cg4-step--hot .t em { color: #fff; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; }
+.cg4-step--hot .d { color: rgba(255,255,255,0.88); }
+
+/* 하단 CTA 띠 */
+.cg4-cta {
+  margin-top: 28px; border-radius: 18px; background: #fff; border: 1.5px solid var(--pink-ln);
+  padding: 22px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+}
+.cg4-cta .t { font-size: 19px; font-weight: 800; letter-spacing: -0.03em; }
+.cg4-cta .t em { color: var(--pink); }
+.cg4-cta .d { margin-top: 4px; font-size: 14px; color: var(--txt-3); }
+.cg4-btn {
+  display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0;
+  background: var(--pink); color: #fff !important; text-decoration: none !important;
+  font-size: 17px; font-weight: 700; padding: 16px 26px; border-radius: 999px; white-space: nowrap;
+  box-shadow: 0 10px 26px -10px rgba(255,47,106,0.7); transition: transform .15s ease;
+}
+.cg4-btn:hover { transform: translateY(-2px); }
+.cg4-btn svg { width: 16px; height: 16px; }
+
+@media (max-width: 960px) {
+  .cg4-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .cg4 { padding: 80px 0; }
+  .cg4-in { padding: 0 20px; }
+  .cg4-eyebrow { font-size: 14px; }
+  .cg4-title { font-size: 30px; }
+  .cg4-desc { font-size: 16px; }
+  .cg4-grid { margin-top: 36px; gap: 14px; }
+  .cg4-card { padding: 22px 18px 18px; }
+  .cg4-total .v { font-size: 46px; }
+  .cg4-step { padding: 20px 18px 20px 76px; }
+  .cg4-step .no { left: 18px; width: 40px; height: 40px; font-size: 14px; }
+  .cg4-step .t { font-size: 18px; }
+  .cg4-step .d { font-size: 14px; }
+  .cg4-cta { padding: 20px; }
+  .cg4-btn { width: 100%; justify-content: center; }
+}
+</style>
+
+<section class="cg4" id="support">
+  <div class="cg4-in">
+    <div class="cg4-eyebrow">창업 지원 혜택</div>
+    <h2 class="cg4-title">아낀 돈은 좋은 상권에,<br>투자금 회수는 <em>더 빠르게</em></h2>
+    <p class="cg4-desc">
+      개설비 할인과 본사·금융 지원으로 초기 부담을 덜고, 그 여력을 매출이 나오는 자리에 더하세요.
+      같은 투자금이라도 <strong>상권이 회수 속도를 결정합니다.</strong>
+    </p>
+
+    <div class="cg4-grid">
+
+      <div class="cg4-card">
+        <div class="cg4-cost">
+          <span class="lb">개설비용 <span>(8평 기준)</span></span>
+          <span class="vals"><s>7,500만원</s><span style="color:#8E949F;font-size:13px;">→</span><b>6,250만원</b></span>
+        </div>
+        <div class="cg4-head">창업 지원 합계 <small>할인 + 대출·할부</small></div>
+        <div class="cg4-fin">
+          <div class="cg4-row"><span class="cg4-chip cg4-chip--cut">할인</span><span class="nm">가맹비 면제·교육·마케팅·설비</span><span class="v">−1,250만원</span></div>
+          <div class="cg4-row"><span class="cg4-chip cg4-chip--hq">본사</span><span class="nm">36개월 무이자 분할</span><span class="v">−3,600만원</span></div>
+          <div class="cg4-row"><span class="cg4-chip cg4-chip--sam">삼성카드</span><span class="nm">무이자 할부</span><span class="v">−2,000만원</span></div>
+          <div class="cg4-row"><span class="cg4-chip cg4-chip--hana">하나은행</span><span class="nm">창업 대출</span><span class="v">−3,000만원</span></div>
+        </div>
+        <div class="cg4-total"><span class="k">최대</span><span class="v">−9,850<i>만원</i></span></div>
+        <div class="cg4-foot">VAT 별도 · 본사 분할·카드 할부·은행 대출은 상환이 필요한 금융 지원이며, 대출 한도는 금융기관 심사에 따라 달라집니다.</div>
+      </div>
+
+      <div class="cg4-steps">
+        <div class="cg4-step">
+          <span class="no">01</span>
+          <div class="t">초기 부담은 <em>최소로</em></div>
+          <div class="d">할인 1,250만원에 본사 36개월 무이자 분할 3,600만원, 삼성카드 무이자 할부 2,000만원, 하나은행 창업대출 3,000만원까지. 개설비에 <strong>최대 9,850만원</strong>을 지원받아 시작합니다.</div>
+        </div>
+        <div class="cg4-step">
+          <span class="no">02</span>
+          <div class="t">아낀 여력은 <em>좋은 상권</em>에</div>
+          <div class="d">하나은행 창업대출·삼성카드 무이자 할부로 확보한 여력을 보증금·권리금에 더해, 한 단계 더 좋은 자리를 잡으세요. 본사가 상권을 함께 검토합니다.</div>
+        </div>
+        <div class="cg4-step">
+          <span class="no">03</span>
+          <div class="t">높은 매출로 <em>빠른 회수</em></div>
+          <div class="d">매출이 나오는 자리에서 시작하면 투자금 회수 기간이 짧아집니다. 설비 대금은 월 100만원씩, 이자 없이 나눠 갚습니다.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cg4-cta">
+      <div>
+        <div class="t">2026년 12월 31일까지 가맹계약 시 <em>선착순 적용</em></div>
+        <div class="d">내 예산과 희망 지역에 맞는 상권·지원 조건을 상담에서 바로 계산해 드립니다.</div>
+      </div>
+      <a class="cg4-btn" href="#apply-form">무료 창업상담 신청
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8h9M8.5 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
   <section class="bean">
     <div class="wrap">
       <div class="eyebrow">원가 경쟁력</div>
@@ -4364,329 +5032,16 @@
       </h2>
       <p class="cost-desc">인테리어 완성도, 분위기는 강화하고,<br>초기 개설비는 700~3,000만원까지 낮췄습니다.</p>
 
-      <!-- 평수 탭 -->
-      <div class="cost-tabs" role="tablist">
-        <button type="button" class="cost-tab active" data-size="10" role="tab" aria-selected="true">10평</button>
-        <button type="button" class="cost-tab" data-size="15" role="tab" aria-selected="false">15평</button>
-        <button type="button" class="cost-tab" data-size="20" role="tab" aria-selected="false">20평</button>
-      </div>
+      <div class="cg2-root cg2-embed">
+    <div class="cg2-tabs" role="tablist" aria-label="평수 선택" data-cg2-tabs></div>
+    <p class="cg2-scroll-hint">← 옆으로 밀면 항목별 내용을 볼 수 있어요</p>
+    <div class="cg2-card" data-cg2-panel></div>
 
-      <!-- 10평 -->
-      <div class="cost-tab-panel active" data-panel="10" role="tabpanel">
-        <div class="cost-table-wrap">
-          <table class="cost-table">
-            <colgroup>
-              <col class="cost-col-item">
-              <col class="cost-col-desc">
-              <col class="cost-col-amt">
-            </colgroup>
-            <thead>
-              <tr>
-                <th>품목</th>
-                <th>내용</th>
-                <th>금액 (10평 기준)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="col-item">가맹비</td>
-                <td class="col-desc">상표권 부여, 영업권 보장, 운영 노하우</td>
-                <td class="col-num"><span class="cost-strike">500만원</span> <span class="cost-free">0원</span></td>
-              </tr>
-              <tr>
-                <td class="col-item">교육비</td>
-                <td class="col-desc">가맹점 운영에 관한 이론 및 실습교육</td>
-                <td class="col-num"><span class="cost-strike">500만원</span> <span class="cost-free">0원</span></td>
-              </tr>
-              <tr>
-                <td class="col-item">오픈홍보</td>
-                <td class="col-desc">오픈이벤트 진행 및 현수막, 배너 등 홍보물 제공</td>
-                <td class="col-num"><span class="cost-strike">400만원</span> <span class="cost-free">0원</span></td>
-              </tr>
-              <tr>
-                <td class="col-item">장비 &amp; 설비</td>
-                <td class="col-desc">커피머신, 그라인더, 핫워터, 냉장 &amp; 냉동고, 제빙기, 블랜더, 세정대, 온수기, 디퍼웰, 작업테이블, 오븐, 오븐랙, DID 3대</td>
-                <td class="col-num"><span class="cost-strike">3,300만원</span><br><span
-                    class="cost-new">2,900만원</span><span class="cost-diff">−400만원</span></td>
-              </tr>
-              <tr>
-                <td class="col-item">인테리어</td>
-                <td class="col-desc">최소 10py 공사비용 발생</td>
-                <td class="col-num">1,700만원</td>
-              </tr>
-              <tr>
-                <td class="col-item">설계/감리비</td>
-                <td class="col-desc">도면 설계 및 감리비용</td>
-                <td class="col-num">300만원</td>
-              </tr>
-              <tr>
-                <td class="col-item">간판/사인물</td>
-                <td class="col-desc">전면 간판 (4m 기준), 내외부 사인물 일체</td>
-                <td class="col-num">500만원</td>
-              </tr>
-              <tr>
-                <td class="col-item">비품</td>
-                <td class="col-desc">매장 비품, 조리용 기물, 모형, 유니폼 등</td>
-                <td class="col-num">300만원</td>
-              </tr>
-              <tr class="total-row">
-                <td class="col-item">총계 <span style="font-weight:500;font-size:12px;color:#333;">(vat 별도)</span></td>
-                <td class="col-desc"></td>
-                <td class="col-num">5,700만원</td>
-              </tr>
-              <tr class="benefit-row">
-                <td colspan="3" style="padding:0;">
-                  <div class="cost-benefit-bar">
-                    <div class="cost-benefit-eyebrow">🎁 본사 창립 16주년 기념</div>
-                    <div class="cost-benefit-headline">창업 혜택 <em>9,000만원</em></div>
-                    <div class="cost-benefit-sub">가맹비 · 교육비 · 마케팅비 면제 + 금융 지원</div>
-                    <div class="cost-benefit-plus-row">
-                      <div class="cost-benefit-chip">
-                        <div class="cost-benefit-chip-label">가맹비</div>
-                        <div class="cost-benefit-chip-val">500만원</div>
-                      </div>
-                      <div class="cost-benefit-plus-sign">+</div>
-                      <div class="cost-benefit-chip">
-                        <div class="cost-benefit-chip-label">교육비</div>
-                        <div class="cost-benefit-chip-val">500만원</div>
-                      </div>
-                      <div class="cost-benefit-plus-sign">+</div>
-                      <div class="cost-benefit-chip">
-                        <div class="cost-benefit-chip-label">초기마케팅비</div>
-                        <div class="cost-benefit-chip-val">400만원</div>
-                      </div>
-                      <div class="cost-benefit-plus-sign">+</div>
-                      <div class="cost-benefit-chip samsung">
-                        <div class="cost-benefit-chip-label">무이자 할부</div>
-                        <div class="cost-benefit-chip-val">2,600만원</div>
-                      </div>
-                      <div class="cost-benefit-plus-sign">+</div>
-                      <div class="cost-benefit-chip kb">
-                        <div class="cost-benefit-chip-label">국민은행 창업대출</div>
-                        <div class="cost-benefit-chip-val">5,000만원</div>
-                      </div>
-                    </div>
-                    <div class="cost-benefit-note">* 혜택은 15평 이상, 8월까지 가맹 계약 완료 시 적용됩니다.</div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- 15평 -->
-      <div class="cost-tab-panel" data-panel="15" role="tabpanel">
-        <div class="cost-table-wrap">
-          <table class="cost-table">
-            <colgroup>
-              <col class="cost-col-item">
-              <col class="cost-col-desc">
-              <col class="cost-col-amt">
-            </colgroup>
-            <thead>
-              <tr>
-                <th>품목</th>
-                <th>내용</th>
-                <th>금액 (15평 기준)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="col-item">가맹비</td>
-                <td class="col-desc">상표권 부여, 영업권 보장, 운영 노하우</td>
-                <td class="col-num"><span class="cost-strike">500만원</span> <span class="cost-free">0원</span></td>
-              </tr>
-              <tr>
-                <td class="col-item">교육비</td>
-                <td class="col-desc">가맹점 운영에 관한 이론 및 실습교육</td>
-                <td class="col-num"><span class="cost-strike">500만원</span> <span class="cost-free">0원</span></td>
-              </tr>
-              <tr>
-                <td class="col-item">오픈홍보</td>
-                <td class="col-desc">오픈이벤트 진행 및 현수막, 배너 등 홍보물 제공</td>
-                <td class="col-num"><span class="cost-strike">400만원</span> <span class="cost-free">0원</span></td>
-              </tr>
-              <tr>
-                <td class="col-item">장비 &amp; 설비</td>
-                <td class="col-desc">커피머신, 그라인더, 핫워터, 냉장 &amp; 냉동고, 제빙기, 블랜더, 세정대, 온수기, 디퍼웰, 작업테이블, 오븐, 오븐랙, DID 3대</td>
-                <td class="col-num"><span class="cost-strike">3,300만원</span><br><span
-                    class="cost-new">2,700만원</span><span class="cost-diff">−600만원</span></td>
-              </tr>
-              <tr>
-                <td class="col-item">인테리어</td>
-                <td class="col-desc">최소 10py 공사비용 발생</td>
-                <td class="col-num">2,550만원</td>
-              </tr>
-              <tr>
-                <td class="col-item">설계/감리비</td>
-                <td class="col-desc">도면 설계 및 감리비용</td>
-                <td class="col-num">300만원</td>
-              </tr>
-              <tr>
-                <td class="col-item">간판/사인물</td>
-                <td class="col-desc">전면 간판 (4m 기준), 내외부 사인물 일체</td>
-                <td class="col-num">500만원</td>
-              </tr>
-              <tr>
-                <td class="col-item">비품</td>
-                <td class="col-desc">매장 비품, 조리용 기물, 모형, 유니폼 등</td>
-                <td class="col-num">300만원</td>
-              </tr>
-              <tr class="total-row">
-                <td class="col-item">총계 <span style="font-weight:500;font-size:12px;color:#333;">(vat 별도)</span></td>
-                <td class="col-desc"></td>
-                <td class="col-num">6,350만원</td>
-              </tr>
-              <tr class="benefit-row">
-                <td colspan="3" style="padding:0;">
-                  <div class="cost-benefit-bar">
-                    <div class="cost-benefit-eyebrow">🎁 본사 창립 16주년 기념</div>
-                    <div class="cost-benefit-headline">창업 혜택 <em>9,000만원</em></div>
-                    <div class="cost-benefit-sub">가맹비 · 교육비 · 마케팅비 면제 + 금융 지원</div>
-                    <div class="cost-benefit-plus-row">
-                      <div class="cost-benefit-chip">
-                        <div class="cost-benefit-chip-label">가맹비</div>
-                        <div class="cost-benefit-chip-val">500만원</div>
-                      </div>
-                      <div class="cost-benefit-plus-sign">+</div>
-                      <div class="cost-benefit-chip">
-                        <div class="cost-benefit-chip-label">교육비</div>
-                        <div class="cost-benefit-chip-val">500만원</div>
-                      </div>
-                      <div class="cost-benefit-plus-sign">+</div>
-                      <div class="cost-benefit-chip">
-                        <div class="cost-benefit-chip-label">초기마케팅비</div>
-                        <div class="cost-benefit-chip-val">400만원</div>
-                      </div>
-                      <div class="cost-benefit-plus-sign">+</div>
-                      <div class="cost-benefit-chip samsung">
-                        <div class="cost-benefit-chip-label">무이자 할부</div>
-                        <div class="cost-benefit-chip-val">2,600만원</div>
-                      </div>
-                      <div class="cost-benefit-plus-sign">+</div>
-                      <div class="cost-benefit-chip kb">
-                        <div class="cost-benefit-chip-label">국민은행 창업대출</div>
-                        <div class="cost-benefit-chip-val">5,000만원</div>
-                      </div>
-                    </div>
-                    <div class="cost-benefit-note">* 혜택은 15평 이상, 8월까지 가맹 계약 완료 시 적용됩니다.</div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- 20평 -->
-      <div class="cost-tab-panel" data-panel="20" role="tabpanel">
-        <div class="cost-table-wrap">
-          <table class="cost-table">
-            <colgroup>
-              <col class="cost-col-item">
-              <col class="cost-col-desc">
-              <col class="cost-col-amt">
-            </colgroup>
-            <thead>
-              <tr>
-                <th>품목</th>
-                <th>내용</th>
-                <th>금액 (20평 기준)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="col-item">가맹비</td>
-                <td class="col-desc">상표권 부여, 영업권 보장, 운영 노하우</td>
-                <td class="col-num"><span class="cost-strike">500만원</span> <span class="cost-free">0원</span></td>
-              </tr>
-              <tr>
-                <td class="col-item">교육비</td>
-                <td class="col-desc">가맹점 운영에 관한 이론 및 실습교육</td>
-                <td class="col-num"><span class="cost-strike">500만원</span> <span class="cost-free">0원</span></td>
-              </tr>
-              <tr>
-                <td class="col-item">오픈홍보</td>
-                <td class="col-desc">오픈이벤트 진행 및 현수막, 배너 등 홍보물 제공</td>
-                <td class="col-num"><span class="cost-strike">400만원</span> <span class="cost-free">0원</span></td>
-              </tr>
-              <tr>
-                <td class="col-item">장비 &amp; 설비</td>
-                <td class="col-desc">커피머신, 그라인더, 핫워터, 냉장 &amp; 냉동고, 제빙기, 블랜더, 세정대, 온수기, 디퍼웰, 작업테이블, 오븐, 오븐랙, DID 3대</td>
-                <td class="col-num"><span class="cost-strike">3,300만원</span><br><span
-                    class="cost-new">2,500만원</span><span class="cost-diff">−800만원</span></td>
-              </tr>
-              <tr>
-                <td class="col-item">인테리어</td>
-                <td class="col-desc">최소 10py 공사비용 발생</td>
-                <td class="col-num">3,400만원</td>
-              </tr>
-              <tr>
-                <td class="col-item">설계/감리비</td>
-                <td class="col-desc">도면 설계 및 감리비용</td>
-                <td class="col-num">300만원</td>
-              </tr>
-              <tr>
-                <td class="col-item">간판/사인물</td>
-                <td class="col-desc">전면 간판 (4m 기준), 내외부 사인물 일체</td>
-                <td class="col-num">500만원</td>
-              </tr>
-              <tr>
-                <td class="col-item">비품</td>
-                <td class="col-desc">매장 비품, 조리용 기물, 모형, 유니폼 등</td>
-                <td class="col-num">300만원</td>
-              </tr>
-              <tr class="total-row">
-                <td class="col-item">총계 <span style="font-weight:500;font-size:12px;color:#333;">(vat 별도)</span></td>
-                <td class="col-desc"></td>
-                <td class="col-num">7,000만원</td>
-              </tr>
-              <tr class="benefit-row">
-                <td colspan="3" style="padding:0;">
-                  <div class="cost-benefit-bar">
-                    <div class="cost-benefit-eyebrow">🎁 본사 창립 16주년 기념</div>
-                    <div class="cost-benefit-headline">창업 혜택 <em>9,000만원</em></div>
-                    <div class="cost-benefit-sub">가맹비 · 교육비 · 마케팅비 면제 + 금융 지원</div>
-                    <div class="cost-benefit-plus-row">
-                      <div class="cost-benefit-chip">
-                        <div class="cost-benefit-chip-label">가맹비</div>
-                        <div class="cost-benefit-chip-val">500만원</div>
-                      </div>
-                      <div class="cost-benefit-plus-sign">+</div>
-                      <div class="cost-benefit-chip">
-                        <div class="cost-benefit-chip-label">교육비</div>
-                        <div class="cost-benefit-chip-val">500만원</div>
-                      </div>
-                      <div class="cost-benefit-plus-sign">+</div>
-                      <div class="cost-benefit-chip">
-                        <div class="cost-benefit-chip-label">초기마케팅비</div>
-                        <div class="cost-benefit-chip-val">400만원</div>
-                      </div>
-                      <div class="cost-benefit-plus-sign">+</div>
-                      <div class="cost-benefit-chip samsung">
-                        <div class="cost-benefit-chip-label">무이자 할부</div>
-                        <div class="cost-benefit-chip-val">2,600만원</div>
-                      </div>
-                      <div class="cost-benefit-plus-sign">+</div>
-                      <div class="cost-benefit-chip kb">
-                        <div class="cost-benefit-chip-label">국민은행 창업대출</div>
-                        <div class="cost-benefit-chip-val">5,000만원</div>
-                      </div>
-                    </div>
-                    <div class="cost-benefit-note">* 혜택은 15평 이상, 8월까지 가맹 계약 완료 시 적용됩니다.</div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="cost-notes">
-        <p>※ 별도사항: 철거, 냉난방기, 의탁자, 어닝, 테이크아웃 창호, 전기 증설, 한전 불입금, 계약이행보증금</p>
-        <p>※ 전면 3.5m(한칸) 기준 견적입니다. ※ 추가 평당 인테리어 170만원, 설계감리비 평당 15만원 추가 (10평이상부터)</p>
-        <p>※ 로열티 월 15만원 (vat 별도) ※ 상권에 따라 10평 이하 창업도 가능 ※ vat 별도 금액이며, 점포상황에 따라 견적이 상이할 수 있습니다.</p>
+    <div class="cg2-notes">
+      <p>※ 별도사항: 철거, 냉난방기, 의탁자, 어닝, 테이크아웃 창호, 전기 증설, 한전 불입금, 계약이행보증금, 추가 외부공사비 / 포스·키오스크 233만원 별도</p>
+      <p>※ 전면 3.5m(한칸) 기준 견적 · 8평 초과 시 인테리어 평당 170만원 추가 · 로열티 월 15만원(VAT 별도) · 상권에 따라 8평 이하 창업도 가능합니다.</p>
+    </div>
+  
       </div>
     </div>
   </section>
@@ -4701,127 +5056,68 @@
       </h2>
       <p class="cost-desc">같은 평수, 비슷한 예산이라면 '무엇이 포함되어 있는지, 무엇이 없는지' 반드시 확인하셔야 합니다.</p>
 
-      <div class="cost-table-wrap tip-host">
-        <table class="cost-table">
+      <div class="cg2-root cg2-embed">
+<p class="cg2-scroll-hint">← 표를 옆으로 밀어서 타사와 비교해 보세요</p>
+    <div class="cg2-card cg2-card--tip">
+      <div class="cg2-scroll">
+        <table class="cg2-t cg2-t--comp">
+          <colgroup><col class="ci"><col class="cc"><col class="co"><col class="co"><col class="co"></colgroup>
           <thead>
             <tr>
-              <th style="min-width:130px;">품목</th>
-              <th class="col-cg"><span class="cost-cg-star">★ 최고 가성비</span>카페게이트</th>
-              <th>M사</th>
-              <th>T사</th>
-              <th>A사</th>
+              <th>품목</th>
+              <th class="cgcol">카페게이트<span class="star">★ 최저 총개설비용</span><small class="py">8평 기준</small></th>
+              <th class="n">M사<small class="py">10평 기준</small></th><th class="n">T사<small class="py">10평 기준</small></th><th class="n">A사<small class="py">10평 기준</small></th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="col-item">가맹비</td>
-              <td class="col-num col-cg">
-                면제<span class="tip-wrap"><button type="button" class="tip-toggle" aria-label="자세히">ⓘ</button><span
-                    class="tip-content">가맹비 면제, 초기 비용 절감!</span></span>
-                <span class="cost-badge block">한시적 면제</span>
-              </td>
-              <td class="col-num">1,000만원</td>
-              <td class="col-num">500만원</td>
-              <td class="col-num">0원</td>
-            </tr>
-            <tr>
-              <td class="col-item">교육비</td>
-              <td class="col-num col-cg">
-                면제<span class="tip-wrap"><button type="button" class="tip-toggle" aria-label="자세히">ⓘ</button><span
-                    class="tip-content">초보자도 쉽게 전문교육시설에서 교육</span></span>
-                <span class="cost-badge block">한시적 면제</span>
-              </td>
-              <td class="col-num">500만원</td>
-              <td class="col-num">300만원</td>
-              <td class="col-num">0원</td>
-            </tr>
-            <tr>
-              <td class="col-item">장비 &amp; 설비</td>
-              <td class="col-num col-cg">
-                2,900만원<span class="tip-wrap"><button type="button" class="tip-toggle" aria-label="자세히">ⓘ</button><span
-                    class="tip-content">베이커리 설비일체 DID 3대 포함<br>15평 총 600만원 추가할인<br>20평 총 800만원 추가할인</span></span>
-                <span class="cost-badge block">평수별 추가할인</span>
-              </td>
-              <td class="col-num">3,255만원</td>
-              <td class="col-num">3,200만원</td>
-              <td class="col-num">3,000만원</td>
-            </tr>
-            <tr>
-              <td class="col-item">인테리어</td>
-              <td class="col-num col-cg">
-                1,700만원<span class="tip-wrap"><button type="button" class="tip-toggle" aria-label="자세히">ⓘ</button><span
-                    class="tip-content">높은 퀄리티, 합리적인 인테리어 비용</span></span>
-              </td>
-              <td class="col-num">1,500만원</td>
-              <td class="col-num">2,200만원</td>
-              <td class="col-num">2,160만원</td>
-            </tr>
-            <tr>
-              <td class="col-item">설계·감리비</td>
-              <td class="col-num col-cg">
-                300만원<span class="tip-wrap"><button type="button" class="tip-toggle" aria-label="자세히">ⓘ</button><span
-                    class="tip-content">직접공사 가능</span></span>
-              </td>
-              <td class="col-num">250만원</td>
-              <td class="col-num">0원</td>
-              <td class="col-num">300만원</td>
-            </tr>
-            <tr>
-              <td class="col-item">간판·사인물</td>
-              <td class="col-num col-cg">500만원</td>
-              <td class="col-num">511만원</td>
-              <td class="col-num">550만원</td>
-              <td class="col-num">500만원</td>
-            </tr>
-            <tr>
-              <td class="col-item">비품</td>
-              <td class="col-num col-cg">300만원</td>
-              <td class="col-num">87만원</td>
-              <td class="col-num">350만원</td>
-              <td class="col-num">400만원</td>
-            </tr>
-            <tr>
-              <td class="col-item">포스·키오스크</td>
-              <td class="col-num col-cg">
-                별도<span class="tip-wrap"><button type="button" class="tip-toggle" aria-label="자세히">ⓘ</button><span
-                    class="tip-content">별도: 233만원</span></span>
-              </td>
-              <td class="col-num">321만원+α</td>
-              <td class="col-num">별도</td>
-              <td class="col-num">별도</td>
-            </tr>
-            <tr class="total-row">
-              <td class="col-item">총계</td>
-              <td class="col-num col-cg"><span class="cost-gate-big">5,700만원</span></td>
-              <td class="col-num">7,103만원</td>
-              <td class="col-num">7,100만원</td>
-              <td class="col-num">6,360만원</td>
-            </tr>
-            <tr>
-              <td class="col-item">예상별도비용</td>
-              <td class="col-num col-cg" style="font-weight:400;">1,500만원</td>
-              <td class="col-num">3,000만원</td>
-              <td class="col-num">2,500만원</td>
-              <td class="col-num">2,500만원</td>
-            </tr>
-            <tr class="total-row final-row">
-              <td class="col-item">총개설비용 <span style="font-weight:500;font-size:12px;color:#333;">(vat 별도)</span></td>
-              <td class="col-num col-cg">
-                <span class="cost-gate-big final">7,200만원</span>
-                <span class="cost-badge impact">🔥 타사 대비 최대 3,000만원 저렴</span>
-                <span class="cost-lowest">✓ 최저 총개설비용</span>
-              </td>
-              <td class="col-num">10,103만원</td>
-              <td class="col-num">9,600만원</td>
-              <td class="col-num">8,860만원</td>
-            </tr>
+            <tr><td class="ti">가맹비</td>
+              <td class="cgcol"><span class="cg2-free">0원</span><span class="cg2-sav">면제</span></td>
+              <td class="o">1,000만원</td><td class="o">500만원</td><td class="o">0원</td></tr>
+            <tr><td class="ti">교육비</td>
+              <td class="cgcol">350만원<span class="cg2-sav">−150</span></td>
+              <td class="o">500만원</td><td class="o">300만원</td><td class="o">0원</td></tr>
+            <tr><td class="ti">초기마케팅</td>
+              <td class="cgcol">200만원<span class="cg2-sav">−200</span></td>
+              <td class="o">미공시</td><td class="o">미공시</td><td class="o">미공시</td></tr>
+            <tr><td class="ti">주방설비</td>
+              <td class="cgcol">2,900만원<span class="cg2-tip"><button type="button" class="cg2-tip-btn" aria-label="주방설비 설명">i</button><span class="cg2-tip-body" role="tooltip">베이커리 설비 일체 + DID 3대 포함. 전 평수 400만원 할인.</span></span></td>
+              <td class="o">3,255만원</td><td class="o">3,200만원</td><td class="o">3,000만원</td></tr>
+            <tr><td class="ti">인테리어</td>
+              <td class="cgcol">1,700만원<span class="cg2-tip"><button type="button" class="cg2-tip-btn" aria-label="인테리어 설명">i</button><span class="cg2-tip-body" role="tooltip">8평 기준. 1평 늘 때마다 170만원 추가되며, 철거·냉난방기·전기 증설은 별도입니다.</span></span></td>
+              <td class="o">1,500만원</td><td class="o">2,200만원</td><td class="o">2,160만원</td></tr>
+            <tr><td class="ti">설계·감리비</td>
+              <td class="cgcol">300만원</td>
+              <td class="o">250만원</td><td class="o">0원</td><td class="o">300만원</td></tr>
+            <tr><td class="ti">간판·사인물</td>
+              <td class="cgcol">500만원</td>
+              <td class="o">511만원</td><td class="o">550만원</td><td class="o">500만원</td></tr>
+            <tr><td class="ti">비품</td>
+              <td class="cgcol">300만원</td>
+              <td class="o">87만원</td><td class="o">350만원</td><td class="o">400만원</td></tr>
+            <tr><td class="ti">포스·키오스크</td>
+              <td class="cgcol">별도<span class="cg2-tip"><button type="button" class="cg2-tip-btn" aria-label="포스 설명">i</button><span class="cg2-tip-body" role="tooltip">별도 233만원</span></span></td>
+              <td class="o">321만원+α</td><td class="o">별도</td><td class="o">별도</td></tr>
+            <tr class="cg2-crow"><td class="ti">개설비용 합계</td>
+              <td class="cgcol">6,250만원</td>
+              <td class="o">7,103만원</td><td class="o">7,100만원</td><td class="o">6,360만원</td></tr>
+            <tr class="cg2-crow"><td class="ti">예상 별도비용</td>
+              <td class="cgcol" style="font-weight:600;">1,500만원</td>
+              <td class="o">3,000만원</td><td class="o">2,500만원</td><td class="o">2,500만원</td></tr>
+            <tr class="cg2-crow cg2-crow-final"><td class="ti">총개설비용 <small style="font-weight:500;font-size:11.5px;color:#5A6070;">(VAT 별도)</small></td>
+              <td class="cgcol"><span class="big"><span class="st">★</span>7,750<i>만원</i></span><span class="lowest">4개사 중 최저</span></td>
+              <td class="o">10,103만원</td><td class="o">9,600만원</td><td class="o">8,860만원</td></tr>
           </tbody>
         </table>
       </div>
+    </div>
 
-      <div class="cost-notes">
-        <p>※ 10평 기준 개설비용 비교이며, 공시 자료를 비교한 것으로 실제로는 더 큰 차이가 있을 수 있습니다.</p>
-        <p>※ vat 별도 금액이며, 점포 상황에 따라 견적이 상이하므로 자세한 내용은 상담을 통해 확인해주세요.</p>
+    <p class="cg2-save-line">총개설비용 기준, 비교 3개사보다 <b>1,110~2,353만원</b> 낮습니다.<small>카페게이트 8평 · 타사 10평 기준</small></p>
+
+    <div class="cg2-notes">
+      <p>※ 카페게이트는 8평, 타사는 각 사 정보공개서 등 공시 자료의 10평 기준 금액이며, 비교 평수가 다릅니다. 타사 초기마케팅비는 공시 자료에서 확인되지 않아 '미공시'로 표기했습니다.</p>
+      <p>※ VAT 별도 금액이며 점포 상황에 따라 견적이 상이하므로, 자세한 내용은 상담을 통해 확인해 주세요.</p>
+    </div>
+  
       </div>
     </div>
   </section>
@@ -5180,6 +5476,282 @@
       window.parent.postMessage({ height: document.body.scrollHeight }, '*');
     });
   </script>
+<script>
+(function () {
+  'use strict';
+
+  /* ═══════════════════════════════════════════════════════
+     ▼▼▼ 여기만 수정하면 됩니다 ▼▼▼
+     ═══════════════════════════════════════════════════════ */
+  var CG2_CONFIG = {
+
+    // 혜택 마감일 ('YYYY-MM-DD', 비우면 날짜 없이 '선착순 한시 혜택'만 표기)
+    deadline: '2026-12-31',
+
+    // 평수 목록 — equip(주방설비, 전 평수 3,300 → 2,900 동일 할인)만 직접 지정, 나머지는 아래 공식으로 자동 계산
+    //   인테리어    = 1,700만원 + (평수 − 8) × 170만원    (8평 기준, 1평 늘 때마다 170만원 추가)
+    //   설계·감리비 =   300만원 + (평수 − 10) × designPerPy
+    sizes: [
+      { py: 8,  tag: '미니 매장', equip: 2900 },
+      { py: 10, tag: '소형 매장', equip: 2900 },
+      { py: 15, tag: '표준 매장', equip: 2900 },
+      { py: 20, tag: '대형 매장', equip: 2900 }
+    ],
+    basePy: 8,
+    baseInterior: 1700, interiorPerPy: 170,
+    baseDesign: 300,    designPerPy: 0,   // 평당 15만원 가산이면 15로 변경
+
+    // 평수 무관 고정 항목
+    fixed: {
+      join:      { normal: 500, now: 0,   desc: '상표권 부여, 영업권 보장, 운영 노하우' },
+      edu:       { normal: 500, now: 350, desc: '가맹점 운영에 관한 이론 및 실습 교육' },
+      marketing: { normal: 400, now: 200, desc: '오픈 이벤트 진행 및 현수막·배너 등 홍보물 제공' },
+      sign:      { normal: 500, now: 500, desc: '전면 간판, 내외부 사인물 일체 (전면 3.5m 한칸 기준)' },
+      supply:    { normal: 300, now: 300, desc: '매장 비품, 조리용 기물, 모형, 유니폼 등' }
+    },
+    equipDesc: '커피머신, 그라인더, 핫워터, 냉장·냉동고, 제빙기, 블렌더, 세정대, 온수기, 디퍼웰, 작업테이블, 오븐, 오븐랙, DID 3대',
+
+    // 금융 지원 (단위: 만원)
+    fin: { hq: 3600, samsung: 2000, hana: 3000 }
+  };
+  /* ═══════════════════════════════════════════════════════
+     ▲▲▲ 수정 영역 끝 ▲▲▲
+     ═══════════════════════════════════════════════════════ */
+
+  var C = CG2_CONFIG;
+
+  // PC 섹션과 모바일 전용 섹션에 같은 코드가 들어가므로, 화면의 .cg2-root 마다 한 번씩만 초기화
+  var roots = document.querySelectorAll('.cg2-root');
+  for (var ri = 0; ri < roots.length; ri++) {
+    if (roots[ri].getAttribute('data-cg2-ready') === '1') continue;
+    roots[ri].setAttribute('data-cg2-ready', '1');
+    initRoot(roots[ri]);
+  }
+
+  function initRoot(root) {
+
+  var nf = function (n) { return n.toLocaleString('ko-KR'); };
+  var man = function (n) { return nf(n) + '만원'; };
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $  = function (sel) { return root.querySelector(sel); };
+  var $$ = function (sel) { return Array.prototype.slice.call(root.querySelectorAll(sel)); };
+  var byKey = function (k) { return root.querySelector('[data-cg2="' + k + '"]'); };
+  var esc = function (t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); };
+
+  var FIN_TOTAL = C.fin.hq + C.fin.samsung + C.fin.hana;
+
+  /* ── 평수별 금액 산출 ── */
+  function interiorOf(py) { return C.baseInterior + Math.max(0, py - C.basePy) * C.interiorPerPy; }
+  function designOf(py)   { return C.baseDesign   + Math.max(0, py - C.basePy) * C.designPerPy; }
+
+  function rowsFor(s) {
+    var F = C.fixed;
+    return [
+      { item: '가맹비',        desc: F.join.desc,      normal: F.join.normal,      now: F.join.now },
+      { item: '교육비',        desc: F.edu.desc,       normal: F.edu.normal,       now: F.edu.now },
+      { item: '초기마케팅',    desc: F.marketing.desc, normal: F.marketing.normal, now: F.marketing.now },
+      { item: '주방설비',      desc: C.equipDesc,      normal: 3300,               now: s.equip },
+      { item: '인테리어',      desc: '인테리어 기본 공사 · 8평 초과 시 평당 170만원 추가 (철거·냉난방기·전기 증설 등은 별도)', normal: interiorOf(s.py), now: interiorOf(s.py) },
+      { item: '설계/감리비',   desc: '도면 설계 및 감리비용', normal: designOf(s.py), now: designOf(s.py) },
+      { item: '간판/사인',     desc: F.sign.desc,      normal: F.sign.normal,      now: F.sign.now },
+      { item: '비품·주방집기', desc: F.supply.desc,    normal: F.supply.normal,    now: F.supply.now }
+    ];
+  }
+  function totalsFor(s) {
+    var tn = 0, tw = 0;
+    rowsFor(s).forEach(function (r) { tn += r.normal; tw += r.now; });
+    return { normal: tn, now: tw, cut: tn - tw };
+  }
+
+  /* ── 마감일 문구 ── */
+  (function () {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(C.deadline || '');
+    if (!m) return;
+    var txt = m[1] + '년 ' + Number(m[2]) + '월 ' + Number(m[3]) + '일';
+    var pill = byKey('deadlinePill'), note = byKey('deadlineNote');
+    if (pill) pill.textContent = txt + '까지 가맹계약 완료 시';
+    if (note) note.textContent = '본 혜택은 ' + txt + '까지 가맹계약을 완료한 경우에 적용되며, 선착순으로 조기 종료될 수 있습니다.';
+  })();
+
+  /* ── 히어로 금액 카드 (기준 평수 = sizes[0]) ── */
+  (function () {
+    var s = C.sizes[0], t = totalsFor(s);
+    var set = function (k, v) { var el = byKey(k); if (el) el.textContent = v; };
+    var support = t.cut + FIN_TOTAL;           // 할인 + 본사·카드·은행
+    set('heroTotal',  man(t.now));
+    set('heroSupport', man(support));
+    set('cardNormal', man(t.normal));
+    set('cardNow',    man(t.now));
+    set('cardPy',     '(' + s.py + '평 기준)');
+    set('cardCut',    '−' + man(t.cut));
+    set('finHq',      '−' + man(C.fin.hq));
+    set('finSam',     '−' + man(C.fin.samsung));
+    set('finHana',    '−' + man(C.fin.hana));
+    set('finTotal',   man(t.now));
+    set('stackCost',  man(t.now));
+    set('segCost',    man(t.now));
+    set('stackNormal', man(t.normal));
+    set('segCut',      '−' + man(t.cut));
+    set('legendCut',   man(t.cut));
+    set('legendNormal', man(t.normal));
+
+    var cnt = root.querySelector('[data-cg2-count]');
+    if (cnt) cnt.setAttribute('data-cg2-count', String(support));
+  })();
+
+  /* ── 개설비용 표 + 평수 탭 ── */
+  (function () {
+    var tabsEl = $('[data-cg2-tabs]'), panelEl = $('[data-cg2-panel]');
+    if (!tabsEl || !panelEl) return;
+
+    // 모바일(768px 이하)에서는 열 순서: 품목 → 정상가 → 할인 적용가 → 내용 (내용은 옆으로 밀어서 확인)
+    var mq = window.matchMedia ? window.matchMedia('(max-width: 768px)') : null;
+    var current = C.sizes[0];
+
+    function render(s) {
+      current = s;
+      var mob = !!(mq && mq.matches);
+      var t = totalsFor(s), html = '';
+      rowsFor(s).forEach(function (r) {
+        var cut = r.normal - r.now, same = cut === 0;
+        var cItem = '<td class="ti">' + esc(r.item) + '</td>';
+        var cDesc = '<td class="td">' + esc(r.desc) + '</td>';
+        var cNorm = '<td class="tb' + (same ? ' same' : '') + '">' + man(r.normal) + '</td>';
+        var cNow  = '<td class="ta">' + (r.now === 0 ? '<span class="cg2-free">0원</span>' : man(r.now))
+                  + (same ? '' : '<span class="cg2-sav">−' + nf(cut) + '</span>') + '</td>';
+        html += '<tr>' + (mob ? cItem + cNorm + cNow + cDesc : cItem + cDesc + cNorm + cNow) + '</tr>';
+      });
+      var sNorm = '<td class="tb">' + man(t.normal) + '</td>';
+      var sNow  = '<td class="ta">' + nf(t.now) + '<i>만원</i></td>';
+      html += '<tr class="cg2-sum">'
+            + (mob
+                ? '<td class="ti">총계<small>VAT 별도</small></td>' + sNorm + sNow + '<td class="td">' + s.py + '평 기준</td>'
+                : '<td class="ti" colspan="2">총계 <small>VAT 별도 · ' + s.py + '평 기준</small></td>' + sNorm + sNow)
+            + '</tr>';
+
+      var thItem = '<th>품목</th>', thDesc = '<th>내용</th>',
+          thNorm = '<th class="n">정상가</th>',
+          thNow  = '<th class="n hl">할인 적용가 (' + s.py + '평)</th>';
+
+      panelEl.innerHTML =
+        '<div class="cg2-scroll"><table class="cg2-t' + (mob ? ' cg2-t--mob' : '') + '">'
+      + (mob
+          ? '<colgroup><col class="mi"><col class="mb"><col class="ma"><col class="md"></colgroup>'
+          : '<colgroup><col class="ci"><col class="cd"><col class="cb"><col class="ca"></colgroup>')
+      + '<thead><tr>' + (mob ? thItem + thNorm + thNow + thDesc : thItem + thDesc + thNorm + thNow) + '</tr></thead>'
+      + '<tbody>' + html + '</tbody></table></div>';
+    }
+
+    C.sizes.forEach(function (s, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'cg2-tab';
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+      b.innerHTML = '<span class="tp">' + s.py + '평</span><span class="tl">' + s.tag + '</span>';
+      b.addEventListener('click', function () {
+        tabsEl.querySelectorAll('.cg2-tab').forEach(function (x) { x.setAttribute('aria-selected', 'false'); });
+        b.setAttribute('aria-selected', 'true');
+        render(s);
+      });
+      tabsEl.appendChild(b);
+    });
+    render(C.sizes[0]);
+
+    // 화면 회전 등으로 PC↔모바일 폭이 바뀌면 다시 그림
+    if (mq) {
+      var onChange = function () { render(current); };
+      if (mq.addEventListener) mq.addEventListener('change', onChange);
+      else if (mq.addListener) mq.addListener(onChange);
+    }
+  })();
+
+  /* ── 스택 바: 개설비용 vs 지원 한도 (같은 축) ── */
+  (function () {
+    var stack = $('[data-cg2-stack]');
+    if (!stack) return;
+    var tt = totalsFor(C.sizes[0]), cost = tt.now;
+    var axisCost = tt.normal;      // 개설비용 막대: 정상가 7,500 = 100%
+    var axisFund = FIN_TOTAL;      // 금융 지원 막대: 8,600 = 100%
+
+    var segCost = stack.querySelector('.cg2-seg--cost');
+    if (segCost) segCost.setAttribute('data-w', (cost / axisCost * 100).toFixed(1));
+    var segDisc = stack.querySelector('.cg2-seg--disc');
+    if (segDisc) segDisc.setAttribute('data-w', (tt.cut / axisCost * 100).toFixed(1));
+    [['--hq', C.fin.hq], ['--sam', C.fin.samsung], ['--hana', C.fin.hana]].forEach(function (p) {
+      var el = stack.querySelector('.cg2-seg' + p[0]);
+      if (el) el.setAttribute('data-w', (p[1] / axisFund * 100).toFixed(1));
+    });
+
+    var segs = Array.prototype.slice.call(stack.querySelectorAll('.cg2-seg'));
+    function fill() {
+      segs.forEach(function (el, i) {
+        var w = el.getAttribute('data-w') + '%';
+        if (reduce) { el.style.width = w; return; }
+        setTimeout(function () { el.style.width = w; }, i * 130);
+      });
+    }
+    if (!('IntersectionObserver' in window)) { fill(); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { fill(); io.disconnect(); } });
+    }, { threshold: 0.3 });
+    io.observe(stack);
+  })();
+
+  /* ── 히어로 숫자 카운트업 ── */
+  (function () {
+    var el = root.querySelector('[data-cg2-count]');
+    if (!el) return;
+    var target = parseInt(el.getAttribute('data-cg2-count'), 10) || 0;
+    function paint(v) { el.textContent = nf(v); }
+    function run() {
+      if (reduce) { paint(target); return; }
+      var dur = 950, t0 = null;
+      function tick(ts) {
+        if (t0 === null) t0 = ts;
+        var p = Math.min((ts - t0) / dur, 1);
+        paint(Math.round(target * (1 - Math.pow(1 - p, 3))));
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+    if (!('IntersectionObserver' in window)) { paint(target); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { run(); io.disconnect(); } });
+    }, { threshold: 0.5 });
+    io.observe(el);
+  })();
+
+  /* ── 툴팁 ── */
+  $$('.cg2-tip-btn').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var tip = btn.closest('.cg2-tip');
+      var open = tip.getAttribute('data-open') === '1';
+      $$('.cg2-tip[data-open="1"]').forEach(function (t) { t.removeAttribute('data-open'); });
+      if (!open) tip.setAttribute('data-open', '1');
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest || !e.target.closest('.cg2-tip')) {
+      $$('.cg2-tip[data-open="1"]').forEach(function (t) { t.removeAttribute('data-open'); });
+    }
+  });
+
+  /* ── 내부 앵커 ── */
+  $$('a[href^="#cg2-"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var t = root.querySelector('[data-cg2-anchor="' + a.getAttribute('href').replace('#cg2-', '') + '"]');
+      if (!t) return;
+      e.preventDefault();
+      t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    });
+  });
+
+  } // initRoot
+
+})();
+</script>
 </body>
 
 </html>
