@@ -4121,76 +4121,428 @@
 
 <body>
 
-  <!-- ══ 01. HERO ══ -->
-  <section class="hero" style="padding:0;">
-    <!-- 배경 이미지 슬라이드쇼 -->
-    <div class="hero-bg-slider">
-      <div class="hero-bg-slide active"></div>
-      <div class="hero-bg-slide"></div>
-      <div class="hero-bg-slide"></div>
-    </div>
-    <div class="hero-inner">
-      <div class="hero-kicker">Cafe Gate · Franchise</div>
+  <!-- ══ BRAND BLOCK v3.1 (261104) — 창업페이지 상단 브랜드 소개 · 에디토리얼 ══ -->
+<style>
+  .bx { --cr:#F6F0EA; --cr2:#EFE6DD; --ink:#1B1612; --sub:#5E554E; --pk:#FF9B9B; --pt:#EC6B75; --wk:#17110D; color:var(--ink); }
+  .bx * { box-sizing:border-box; }
+  .bx img { display:block; max-width:100%; }
+  .bx-wrap { max-width:1200px; margin:0 auto; padding:0 48px; }
+  .bx-lb { font-size:12px; font-weight:600; letter-spacing:.32em; text-transform:uppercase; }
+  .bx-r { opacity:0; transform:translateY(36px); transition:opacity 1.1s ease, transform 1.1s cubic-bezier(.2,.7,.2,1); }
+  .bx-r.on { opacity:1; transform:none; }
+  .bx-r.d1 { transition-delay:.15s; } .bx-r.d2 { transition-delay:.3s; } .bx-r.d3 { transition-delay:.45s; }
 
-      <!-- 슬라이드 타이틀 -->
-      <div class="hero-title-slider">
-        <div class="hero-title-track" id="heroTrack">
-          <div class="hero-title-slide">
-            <h1 class="hero-title">
-              시그니처 라떼와<br>
-              수제 샌드위치의 가치.<br>
-              <em>타협하지 않는 맛의 기준입니다.</em>
-            </h1>
-          </div>
-          <div class="hero-title-slide">
-            <h1 class="hero-title">
-              아침부터 저녁까지 쉴 틈 없는 수익구조,<br>
-              카페게이트만의<br>
-              <em>결합형 메뉴공학이 실현합니다.</em>
-            </h1>
-          </div>
+  /* HERO */
+  .bx-hero { position:relative; height:min(92vh,880px); min-height:600px; overflow:hidden; background:var(--wk); color:#fff; padding:0; }
+  .bx-hero-bg { position:absolute; inset:0; }
+  .bx-hero-bg div { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transform:scale(1.08); transition:opacity 1.8s ease, transform 9s ease-out; }
+  .bx-hero-bg div.on { opacity:1; transform:scale(1); }
+  .bx-hero::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg, rgba(23,17,13,.72) 0%, rgba(23,17,13,.38) 45%, rgba(23,17,13,0) 75%), linear-gradient(0deg, rgba(23,17,13,.5) 0%, rgba(23,17,13,0) 35%); }
+  .bx-hero-in { position:relative; z-index:2; height:100%; display:flex; flex-direction:column; justify-content:center; }
+  .bx-hero .bx-lb { color:rgba(255,255,255,.8); margin-bottom:30px; display:flex; align-items:center; gap:14px; }
+  .bx-hero .bx-lb img { width:14px; }
+  .bx-hero h1 { font-size:clamp(44px,6.4vw,88px); font-weight:700; letter-spacing:-.045em; line-height:1.12; margin-bottom:30px; word-break:keep-all; }
+  .bx-hero h1 span { font-weight:600; }
+  .bx-fit { display:inline-flex; flex-direction:column; align-items:flex-start; }
+  .bx-fit b, .bx-fit span { display:block; white-space:nowrap; font-weight:600; }
+  .bx-fit span { font-weight:600; }
+  .bx-hero-sub { font-size:clamp(16px,1.5vw,19px); font-weight:300; line-height:1.85; color:rgba(255,255,255,.86); margin-bottom:46px; word-break:keep-all; }
+  .bx-hero-cta { display:flex; align-items:center; gap:34px; flex-wrap:wrap; }
+  .bx-pill { display:inline-flex; align-items:center; height:54px; padding:0 30px; border-radius:999px; background:#fff; color:var(--ink); font-size:16px; font-weight:700; transition:background .3s,color .3s; }
+  .bx-pill:hover { background:var(--pk); }
+  .bx-tl { font-size:15px; font-weight:500; color:#fff; border-bottom:1px solid rgba(255,255,255,.6); padding-bottom:4px; }
+  .bx-hero-foot { position:absolute; z-index:2; left:0; right:0; bottom:36px; }
+  .bx-hero-foot .bx-wrap { display:flex; justify-content:space-between; align-items:center; font-size:12px; letter-spacing:.24em; color:rgba(255,255,255,.7); }
+  .bx-bars { display:flex; gap:8px; }
+  .bx-bars i { width:34px; height:2px; background:rgba(255,255,255,.3); position:relative; overflow:hidden; }
+  .bx-bars i.on::after { content:''; position:absolute; inset:0; background:#fff; animation:bxbar 6s linear forwards; transform-origin:left; }
+  @keyframes bxbar { from { transform:scaleX(0);} to { transform:scaleX(1);} }
+
+  /* INTRO */
+  .bx-intro { background:var(--cr); padding:150px 0 130px; text-align:center; }
+  .bx-intro img.h { width:22px; margin:0 auto 34px; }
+  .bx-intro .bx-lb { color:var(--pt); margin-bottom:28px; }
+  .bx-intro h2 { font-size:clamp(30px,3.8vw,52px); font-weight:300; letter-spacing:-.045em; line-height:1.4; word-break:keep-all; }
+  .bx-intro h2 b { font-weight:700; }
+  .bx-intro p { max-width:680px; margin:36px auto 0; font-size:17px; line-height:1.95; color:var(--sub); word-break:keep-all; }
+
+  /* CHAPTERS */
+  .bx-ch { background:var(--cr); padding:40px 0 120px; }
+  .bx-ch-row { display:grid; grid-template-columns:1.1fr 1fr; gap:90px; align-items:center; margin-bottom:150px; }
+  .bx-ch-row:last-child { margin-bottom:0; }
+  .bx-ch-row.rev .bx-ch-img { order:2; }
+  .bx-ch-img { position:relative; }
+  .bx-ch-img .main { width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:4px; }
+  .bx-ch-img .sub { position:absolute; width:56%; height:auto; right:-14%; bottom:-12%; border-radius:4px; border:8px solid var(--cr); box-shadow:0 30px 60px -30px rgba(40,20,10,.35); }
+  .bx-ch-img .sub.wide { width:66%; }
+  .bx-ch-row.rev .bx-ch-img .sub.wide { left:-20%; }
+  .bx-ch-row.rev .bx-ch-img .sub { right:auto; left:-12%; }
+  .bx-ch-no { display:flex; align-items:center; gap:16px; margin-bottom:34px; color:var(--pt); }
+  .bx-ch-no b { font-size:13px; font-weight:700; letter-spacing:.2em; }
+  .bx-ch-no i { width:40px; height:1px; background:var(--pt); }
+  .bx-ch-no span { font-size:12px; letter-spacing:.32em; font-weight:600; }
+  .bx-ch h3 { font-size:clamp(32px,3.6vw,50px); font-weight:700; letter-spacing:-.045em; line-height:1.25; margin-bottom:30px; word-break:keep-all; }
+  .bx-ch h3 span { font-weight:200; }
+  .bx-ch p { font-size:17px; line-height:1.95; color:var(--sub); word-break:keep-all; max-width:440px; }
+  .bx-ch-meta { margin-top:36px; padding-top:22px; border-top:1px solid #DCCFC4; font-size:14px; color:var(--ink); letter-spacing:-.01em; max-width:440px; }
+  .bx-ch-meta em { font-style:normal; color:var(--pt); font-weight:700; margin-right:10px; }
+
+  /* WAY — 세 가지 제대로 */
+  .bx-band { position:relative; height:min(70vh,640px); min-height:420px; background-size:cover; background-position:center; background-attachment:fixed; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff; }
+  .bx-band::before { content:''; position:absolute; inset:0; background:rgba(23,17,13,.5); }
+  .bx-band > div { position:relative; }
+  .bx-band .bx-lb { color:rgba(255,255,255,.8); margin-bottom:26px; }
+  .bx-band h2 { font-size:clamp(30px,4vw,56px); font-weight:300; letter-spacing:-.045em; line-height:1.35; word-break:keep-all; }
+  .bx-band h2 b { font-weight:700; }
+  .bx-way { background:var(--wk); color:#fff; padding:110px 0 120px; }
+  .bx-way-grid { display:grid; grid-template-columns:repeat(3,1fr); }
+  .bx-way-c { padding:0 44px; border-left:1px solid rgba(255,255,255,.14); }
+  .bx-way-c:first-child { border-left:0; padding-left:0; }
+  .bx-way-n { font-size:64px; font-weight:100; letter-spacing:-.04em; color:var(--pk); line-height:1; margin-bottom:34px; }
+  .bx-way-en { font-size:11px; letter-spacing:.3em; color:rgba(255,255,255,.45); margin-bottom:12px; }
+  .bx-way-t { font-size:26px; font-weight:700; letter-spacing:-.04em; margin-bottom:18px; }
+  .bx-way-d { font-size:15px; line-height:1.9; color:rgba(255,255,255,.66); word-break:keep-all; }
+
+  /* STORE + BRIDGE */
+  .bx-store { position:relative; height:min(80vh,760px); min-height:460px; overflow:hidden; }
+  .bx-store > img { width:100%; height:100%; object-fit:cover; }
+  .bx-store::after { content:''; position:absolute; inset:0; background:linear-gradient(0deg, rgba(23,17,13,.62) 0%, rgba(23,17,13,0) 50%); }
+  .bx-store-cap { position:absolute; z-index:2; left:0; right:0; bottom:60px; color:#fff; }
+  .bx-store-cap h2 { font-size:clamp(28px,3.4vw,46px); font-weight:300; letter-spacing:-.045em; line-height:1.35; word-break:keep-all; }
+  .bx-store-cap h2 b { font-weight:700; }
+  .bx-store-cap .bx-lb { color:rgba(255,255,255,.75); margin-bottom:20px; }
+  .bx-bridge { background:var(--cr); padding:110px 0; }
+  .bx-bridge .bx-wrap { display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .bx-bridge h2 { font-size:clamp(26px,3vw,40px); font-weight:300; letter-spacing:-.045em; line-height:1.45; word-break:keep-all; }
+  .bx-bridge h2 b { font-weight:700; }
+  .bx-arrow { flex:none; display:inline-flex; align-items:center; gap:14px; font-size:16px; font-weight:700; color:var(--ink); border-bottom:2px solid var(--ink); padding-bottom:6px; }
+  .bx-arrow:hover { color:var(--pt); border-color:var(--pt); }
+
+
+  /* OWNER NOTE */
+  .bx-own { margin-top:30px; max-width:440px; background:#fff; border-left:3px solid var(--pt); padding:20px 24px; border-radius:0 6px 6px 0; }
+  .bx-own-k { font-size:12px; font-weight:800; letter-spacing:.08em; color:var(--pt); margin-bottom:8px; }
+  .bx-own p { font-size:16px !important; line-height:1.75 !important; color:var(--ink) !important; font-weight:500; margin:0; }
+
+  /* PROOF */
+  .bx-proof { background:var(--cr); padding:140px 0 120px; }
+  .bx-proof-head { text-align:center; margin-bottom:70px; }
+  .bx-proof-head .bx-lb { color:var(--pt); margin-bottom:24px; }
+  .bx-proof-head h2 { font-size:clamp(30px,3.8vw,52px); font-weight:300; letter-spacing:-.045em; line-height:1.35; word-break:keep-all; }
+  .bx-proof-head h2 b { font-weight:700; }
+  .bx-nums { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid #D9CBBF; border-bottom:1px solid #D9CBBF; }
+  .bx-num { padding:50px 30px 46px; text-align:center; border-left:1px solid #D9CBBF; }
+  .bx-num:first-child { border-left:0; }
+  .bx-nums.two { grid-template-columns:repeat(2,1fr); max-width:860px; margin:0 auto; }
+  .bx-num-v { font-size:clamp(40px,4.6vw,64px); font-weight:700; letter-spacing:-.05em; line-height:1; color:var(--ink); }
+  .bx-num-v small { font-size:.42em; font-weight:500; margin-left:4px; letter-spacing:-.02em; }
+  .bx-num-v em { font-style:normal; color:var(--pt); }
+  .bx-num-k { margin-top:18px; font-size:16px; font-weight:700; }
+  .bx-num-d { margin-top:6px; font-size:14px; color:var(--sub); line-height:1.6; word-break:keep-all; }
+  .bx-note { margin-top:20px; font-size:13px; color:#8A7F77; text-align:center; word-break:keep-all; }
+  .bx-awards { margin-top:80px; display:grid; grid-template-columns:repeat(4,1fr); gap:30px; align-items:end; }
+  .bx-aw { text-align:center; }
+  .bx-aw img { height:120px; width:auto; margin:0 auto 18px; object-fit:contain; }
+  .bx-aw b { display:block; font-size:15px; font-weight:700; letter-spacing:-.02em; }
+  .bx-aw span { display:block; margin-top:4px; font-size:13px; color:var(--sub); }
+
+
+  /* DAY — 하루의 시간표 */
+  .bx-day { background:var(--wk); color:#fff; padding:130px 0 0; }
+  .bx-day-head { display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-bottom:60px; }
+  .bx-day-head .bx-lb { color:var(--pk); margin-bottom:22px; }
+  .bx-day-head h2 { font-size:clamp(30px,3.8vw,52px); font-weight:300; letter-spacing:-.045em; line-height:1.3; word-break:keep-all; }
+  .bx-day-head h2 b { font-weight:700; }
+  .bx-day-head p { max-width:380px; font-size:16px; line-height:1.85; color:rgba(255,255,255,.62); word-break:keep-all; }
+  .bx-times { display:grid; grid-template-columns:repeat(3,1fr); }
+  .bx-time { position:relative; height:min(78vh,640px); min-height:460px; overflow:hidden; }
+  .bx-time img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.4s ease; }
+  .bx-time:hover img { transform:scale(1.05); }
+  .bx-time::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(23,17,13,.55) 0%, rgba(23,17,13,.05) 40%, rgba(23,17,13,.75) 100%); }
+  .bx-time-in { position:absolute; z-index:2; inset:0; padding:40px 36px; display:flex; flex-direction:column; justify-content:space-between; }
+  .bx-clock { font-size:clamp(52px,5.6vw,84px); font-weight:100; letter-spacing:-.03em; line-height:1; font-variant-numeric:tabular-nums; }
+  .bx-clock small { display:block; font-size:12px; font-weight:600; letter-spacing:.3em; margin-bottom:12px; color:var(--pk); }
+  .bx-time-t { font-size:24px; font-weight:700; letter-spacing:-.04em; line-height:1.35; margin-bottom:10px; word-break:keep-all; }
+  .bx-time-d { font-size:15px; line-height:1.7; color:rgba(255,255,255,.75); word-break:keep-all; }
+  .bx-time + .bx-time { border-left:1px solid rgba(255,255,255,.12); }
+  .bx-day-own { padding:44px 0 50px; text-align:center; font-size:17px; color:rgba(255,255,255,.8); word-break:keep-all; }
+  .bx-day-own b { color:#fff; }
+  .bx-day-own em { font-style:normal; color:var(--pk); font-weight:700; margin-right:12px; }
+
+  @media (max-width:900px) {
+    .bx-wrap { padding:0 22px; }
+    .bx-hero { height:auto; min-height:640px; }
+    .bx-hero-bg div { background-position:62% center; }
+    .bx-hero::after { background:linear-gradient(0deg, rgba(23,17,13,.82) 0%, rgba(23,17,13,.45) 55%, rgba(23,17,13,.2) 100%); }
+    .bx-hero-in { justify-content:flex-end; padding:120px 22px 110px; min-height:640px; }
+    .bx-hero .bx-lb { margin-bottom:20px; font-size:10px; letter-spacing:.14em; white-space:nowrap; }
+    .bx-hero h1 { margin-bottom:20px; }
+    .bx-hero-sub { margin-bottom:32px; }
+    .bx-hero-cta { gap:22px; }
+    .bx-pill { height:50px; padding:0 24px; font-size:15px; }
+    .bx-intro { padding:96px 0 80px; }
+    .bx-intro p { font-size:15px; }
+    .bx-ch { padding:20px 0 90px; }
+    .bx-ch-row { grid-template-columns:1fr; gap:56px; margin-bottom:100px; }
+    .bx-ch-row.rev .bx-ch-img { order:0; }
+    .bx-ch-img { margin-right:14%; margin-bottom:12%; }
+    .bx-ch-row.rev .bx-ch-img .sub.wide { left:-8%; width:62%; }
+    .bx-ch-row.rev .bx-ch-img { margin-right:0; margin-left:14%; }
+    .bx-ch-img .sub { border-width:6px; }
+    .bx-ch p { font-size:15px; }
+    .bx-band { background-attachment:scroll; height:420px; }
+    .bx-way { padding:80px 0; }
+    .bx-way-grid { grid-template-columns:1fr; }
+    .bx-way-c { padding:34px 0; border-left:0; border-top:1px solid rgba(255,255,255,.14); display:grid; grid-template-columns:72px 1fr; column-gap:10px; }
+    .bx-way-c:first-child { border-top:0; padding-top:0; }
+    .bx-way-n { font-size:44px; grid-row:span 3; margin:0; }
+    .bx-way-t { font-size:22px; margin-bottom:10px; }
+    .bx-store { height:520px; }
+    .bx-store-cap { bottom:40px; }
+    .bx-bridge { padding:80px 0; }
+    .bx-bridge .bx-wrap { flex-direction:column; align-items:flex-start; }
+    .bx-own { padding:16px 18px; }
+    .bx-own p { font-size:14px !important; }
+    .bx-proof { padding:90px 0 80px; }
+    .bx-proof-head { margin-bottom:44px; }
+    .bx-nums { grid-template-columns:1fr; }
+    .bx-num { border-left:0; border-top:1px solid #D9CBBF; padding:34px 10px; }
+    .bx-num:first-child { border-top:0; }
+    .bx-awards { grid-template-columns:repeat(2,1fr); gap:36px 16px; margin-top:56px; }
+    .bx-aw img { height:96px; }
+    .bx-store-cap .bx-pill { margin-top:22px; }
+    .bx-day { padding-top:80px; }
+    .bx-day-head { flex-direction:column; align-items:flex-start; gap:16px; margin-bottom:36px; }
+    .bx-times { grid-template-columns:1fr; }
+    .bx-time { height:380px; min-height:0; }
+    .bx-time + .bx-time { border-left:0; border-top:1px solid rgba(255,255,255,.12); }
+    .bx-time-in { padding:28px 22px; }
+    .bx-day-own { font-size:15px; padding:32px 22px 40px; }
+  }
+</style>
+
+<div class="bx">
+
+  <!-- HERO -->
+  <section class="bx-hero">
+    <div class="bx-hero-bg">
+      <div class="on" style="background-image:url('./brand/mood_hero1.jpg')"></div>
+      <div style="background-image:url('./brand/mood_hero2.jpg')"></div>
+    </div>
+    <div class="bx-wrap bx-hero-in">
+      <div class="bx-lb"><img src="./brand/heart_white.png" alt="">Cafe Gate &nbsp;·&nbsp; Good Coffee, Good Food</div>
+      <h1 class="bx-fit"><b class="l1">맛있는 커피,</b><span class="l2">딱 좋은 한끼.</span></h1>
+      <p class="bx-hero-sub">커피 한 잔에, 한 입 더.<br>손님이 하루에도 여러 번 찾는 카페,<br><b style="font-weight:600;color:#fff;">이제 사장님의 매장으로.</b></p>
+      <div class="bx-hero-cta">
+        <a href="#apply-form" class="bx-pill"
+          onclick="event.preventDefault();document.getElementById('apply-form').scrollIntoView({behavior:'smooth',block:'start'});">무료 창업상담 신청</a>
+        <a href="#bx-intro" class="bx-tl"
+          onclick="event.preventDefault();document.getElementById('bx-intro').scrollIntoView({behavior:'smooth'});">브랜드 이야기 보기</a>
+      </div>
+    </div>
+    <div class="bx-hero-foot"><div class="bx-wrap"><div class="bx-bars"><i class="on"></i><i></i></div><span>SCROLL</span></div></div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="bx-intro" id="bx-intro">
+    <div class="bx-wrap">
+      <img class="h bx-r" src="./brand/heart_black.png" alt="에스프레소 하트">
+      <div class="bx-lb bx-r d1">Brand Story</div>
+      <h2 class="bx-r d2">카페게이트는<br><b>한 잔의 진심</b>에서 시작했습니다.</h2>
+      <p class="bx-r d3">마음을 담아 추출되는 에스프레소 한 방울.<br>그 모양을 그대로 브랜드의 심볼로 삼았습니다.<br><br>메뉴는 커피에서 샌드위치로, 다시 분식으로 넓어졌습니다.<br>커피로 매일 찾아오고, 한 끼를 곁들여 돌아가는 손님.<br>카페게이트 매장의 매출은 그렇게 만들어집니다.</p>
+    </div>
+  </section>
+
+  <!-- CHAPTERS -->
+  <section class="bx-ch">
+    <div class="bx-wrap">
+
+      <div class="bx-ch-row">
+        <div class="bx-ch-img bx-r">
+          <img class="main" src="./brand/mood_latte_tray.jpg" alt="시그니처 크림라떼" loading="lazy">
+          <img class="sub" src="./brand/mood_drinks.jpg" alt="레몬아메리카노와 라떼" loading="lazy">
+        </div>
+        <div class="bx-r d1">
+          <div class="bx-ch-no"><b>01</b><i></i><span>COFFEE</span></div>
+          <h3>매일 마시는 커피를,<br><span>제대로.</span></h3>
+          <p>BSCA 인증을 받은 스페셜티 원두로 매일의 커피를 내립니다. 수제 바닐라 크림을 올린 연남라떼 같은 시그니처는 가격이 아니라 맛으로 선택받는 이유가 됩니다. 매일 다시 찾는 단골이, 매장의 가장 단단한 매출입니다.</p>
+          <div class="bx-ch-meta"><em>Signature</em>연남라떼 · 올데이라떼 · 레몬아메리카노</div>
         </div>
       </div>
 
-      <!-- 도트 인디케이터 -->
-      <div class="hero-dots">
-        <div class="hero-dot active" onclick="heroGoTo(0)"></div>
-        <div class="hero-dot" onclick="heroGoTo(1)"></div>
+      <div class="bx-ch-row rev">
+        <div class="bx-ch-img bx-r">
+          <img class="main" src="./brand/mood_bagel_hand.jpg" alt="햄치즈에그 베이글샌드위치" loading="lazy">
+          <img class="sub wide" src="./brand/mood_bunsik.jpg" alt="게이트 오뎅탕과 게이트 떡볶이" loading="lazy">
+        </div>
+        <div class="bx-r d1">
+          <div class="bx-ch-no"><b>02</b><i></i><span>FOOD</span></div>
+          <h3>커피 옆에,<br><span>한 입 더.</span></h3>
+          <p>샌드위치는 냉동 완제품이 아니라 매장에서 직접 만듭니다. 쫄깃한 탕종 베이글에 햄, 치즈, 에그. 출출한 오후엔 떡볶이와 오뎅탕을 컵에 담은 게이트분식까지. 커피 한 잔 사러 온 손님이 한 끼를 더 고르면, 같은 손님 수로도 결제 금액이 달라집니다.</p>
+          <div class="bx-ch-meta"><em>Food</em>햄치즈에그 베이글샌드위치 · 게이트분식</div>
+        </div>
       </div>
 
-      <p class="hero-sub">
-        저가 커피프랜차이즈가 아닌,<br>
-        커피와 샌드위치로 증명된 성공모델입니다.
-      </p>
-      <div class="hero-btns">
-        <a href="#apply-form" class="btn-main"
-          onclick="event.preventDefault(); document.getElementById('apply-form').scrollIntoView({behavior:'smooth', block:'start'});">무료
-          창업상담 신청</a>
-
-      </div>
     </div>
-    <div class="hero-stats-bar">
-      <div class="hero-stat-item">
-        <div class="h-stat-num">35<span class="u">%</span></div>
-        <div class="h-stat-label">최대수익률</div>
+  </section>
+
+  <!-- DAY — 하루의 시간표 -->
+  <section class="bx-day">
+    <div class="bx-wrap bx-day-head">
+      <div>
+        <div class="bx-lb bx-r">03 &nbsp;—&nbsp; Everyday</div>
+        <h2 class="bx-r d1">손님이 찾는 시간이<br><b>하루에 한 번이 아닙니다.</b></h2>
       </div>
-      <div class="hero-stat-item">
-        <div class="h-stat-num">267<span class="u">%</span></div>
-        <div class="h-stat-label">객단가 상승</div>
+      <p class="bx-r d2">커피만 파는 카페는 아침에 바쁘고 오후엔 조용합니다. 카페게이트는 커피 옆에 한 끼가 있어 오후에도, 저녁 배달에도 주문이 이어집니다. 매장이 쉬는 시간이 줄어듭니다.</p>
+    </div>
+    <div class="bx-times">
+      <div class="bx-time bx-r">
+        <img src="./brand/mood_latte_tray.jpg" alt="아침 커피" loading="lazy">
+        <div class="bx-time-in">
+          <div class="bx-clock"><small>MORNING</small>08:00</div>
+          <div><div class="bx-time-t">출근길, 커피 한 잔</div><p class="bx-time-d">빠르게 받아 가는 아침 커피. 매일 같은 시간에 오는 단골이 생깁니다.</p></div>
+        </div>
       </div>
-      <div class="hero-stat-item">
-        <div class="h-stat-num">5,700<span class="u">만</span></div>
-        <div class="h-stat-label">창업비 (10평)</div>
+      <div class="bx-time bx-r d1">
+        <img src="./brand/mood_bunsik.jpg" alt="오후 게이트분식" loading="lazy">
+        <div class="bx-time-in">
+          <div class="bx-clock"><small>AFTERNOON</small>15:00</div>
+          <div><div class="bx-time-t">출출한 오후, 떡볶이 한 컵</div><p class="bx-time-d">점심 뒤 라떼, 하교길 분식. 다른 카페가 한가한 시간에 주문이 이어집니다.</p></div>
+        </div>
       </div>
-      <div class="hero-stat-item">
-        <div class="h-stat-num">240<span class="u">+</span></div>
-        <div class="h-stat-label">전국 오픈 가맹 매장</div>
+      <div class="bx-time bx-r d2">
+        <img src="./brand/mood_prep.jpg" alt="배달 포장" loading="lazy">
+        <div class="bx-time-in">
+          <div class="bx-clock"><small>EVENING</small>19:00</div>
+          <div><div class="bx-time-t">집과 사무실로, 배달 한 번에</div><p class="bx-time-d">커피와 샌드위치, 분식을 한 번에 담아 배달과 앱 주문으로.</p></div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- WAY -->
+  <div class="bx-band" style="background-image:url('./brand/mood_hero1.jpg')">
+    <div class="bx-wrap">
+      <div class="bx-lb bx-r">The Cafe Gate Way</div>
+      <h2 class="bx-r d1">진심은 말이 아니라,<br><b>세 가지 '제대로'</b>로 보여줍니다.</h2>
+    </div>
+  </div>
+  <section class="bx-way">
+    <div class="bx-wrap bx-way-grid">
+      <div class="bx-way-c bx-r">
+        <div class="bx-way-n">01</div>
+        <div class="bx-way-en">GOOD INGREDIENTS</div>
+        <div class="bx-way-t">재료가 제대로</div>
+        <p class="bx-way-d">BSCA 인증을 받은 스페셜티 원두, 쫄깃한 탕종 베이글, 마다가스카르산 바닐라빈. 좋은 재료로 만듭니다.</p>
+      </div>
+      <div class="bx-way-c bx-r d1">
+        <div class="bx-way-n">02</div>
+        <div class="bx-way-en">WELL MADE</div>
+        <div class="bx-way-t">만드는 게 제대로</div>
+        <p class="bx-way-d">샌드위치는 매장에서 직접 조립합니다. 커피 추출과 품질을 관리하고, 커피 라인업을 계속 늘려갑니다.</p>
+      </div>
+      <div class="bx-way-c bx-r d2">
+        <div class="bx-way-n">03</div>
+        <div class="bx-way-en">FAIR VALUE</div>
+        <div class="bx-way-t">혜택이 제대로</div>
+        <p class="bx-way-d">커피에 한 끼를 더해도 부담 없는 가격. 할인·이벤트·앱 혜택과 빠른 메뉴 제공까지.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="bx-proof">
+    <div class="bx-wrap">
+      <div class="bx-proof-head">
+        <div class="bx-lb bx-r">Proof</div>
+        <h2 class="bx-r d1">말이 아니라,<br><b>매장이 증명합니다.</b></h2>
+      </div>
+      <div class="bx-nums">
+        <div class="bx-num bx-r">
+          <div class="bx-num-v">4억 5,649<small>만원</small></div>
+          <div class="bx-num-k">15평 매장의 1년 매출</div>
+          <div class="bx-num-d">2023년 연매출 실적<br>서울 소재 15평 매장</div>
+        </div>
+        <div class="bx-num bx-r d1">
+          <div class="bx-num-v"><em>+</em>40<small>%</small></div>
+          <div class="bx-num-k">리뉴얼 후 월매출</div>
+          <div class="bx-num-d">커피 &amp; 샌드위치바 전환 매장<br>3,141만원(2024.11) → 4,459만원(2025.11)<br><span style="font-size:12px;color:#8A7F77;">매장 POS 집계 기준 · 단체 주문 일부 미포함</span></div>
+        </div>
+        <div class="bx-num bx-r d2">
+          <div class="bx-num-v">2.7<small>배</small></div>
+          <div class="bx-num-k">손님 1명당 결제 금액</div>
+          <div class="bx-num-d">저가 커피 2,390원 →<br>카페게이트 커피 + 푸드 7,430원</div>
+        </div>
+      </div>
+      <p class="bx-note">※ 표기된 시점의 해당 매장 매출이며, 현재 매출이나 모든 매장의 매출·수익을 보장하지 않습니다. 상권과 운영 방식에 따라 달라질 수 있습니다.</p>
+
+      <div class="bx-awards">
+        <div class="bx-aw bx-r"><img src="./brand/award_fair.png" alt="착한 프랜차이즈"><b>착한 프랜차이즈 2년 연속</b><span>공정거래위원회 · 한국공정거래조정원</span></div>
+        <div class="bx-aw bx-r d1"><img src="./brand/award_coop.png" alt="상생협력 우수 가맹본부"><b>2022 상생협력 우수 가맹본부</b><span>한국공정거래조정원</span></div>
+        <div class="bx-aw bx-r d2"><img src="./brand/award_kfa.png" alt="한국프랜차이즈산업발전 우공 대상"><b>2021 프랜차이즈 대상</b><span>한국프랜차이즈산업협회</span></div>
+        <div class="bx-aw bx-r d3"><img src="./brand/award_esg.png" alt="국가 ESG 우수기업"><b>국가 ESG 우수기업</b><span>제17회 국가지속가능경영컨퍼런스 · 기업윤리 부문</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORE -->
+  <div class="bx-store">
+    <img src="./brand/mood_store.jpg" alt="카페게이트 매장" loading="lazy">
+    <div class="bx-store-cap"><div class="bx-wrap">
+      <div class="bx-lb bx-r">Our Store</div>
+      <h2 class="bx-r d1">동네 골목, 매일 들르는 단골집.<br><b>이제 사장님의 매장으로.</b></h2>
+      <a href="#apply-form" class="bx-pill bx-r d2" style="margin-top:30px;"
+        onclick="event.preventDefault();document.getElementById('apply-form').scrollIntoView({behavior:'smooth',block:'start'});">무료 창업상담 신청</a>
+    </div></div>
+  </div>
+
+  <!-- BRIDGE -->
+  <section class="bx-bridge">
+    <div class="bx-wrap">
+      <h2 class="bx-r">커피 한 잔에, 한 입 더.<br><b>그래서 카페게이트 매장은 객단가가 다릅니다.</b></h2>
+      <a href="#unitprice" class="bx-arrow bx-r d1"
+        onclick="event.preventDefault();document.getElementById('unitprice').scrollIntoView({behavior:'smooth',block:'start'});">수익 구조 보기 →</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  (function () {
+    var s = document.querySelectorAll('.bx-hero-bg div'), b = document.querySelectorAll('.bx-bars i'), i = 0;
+    setInterval(function () {
+      s[i].classList.remove('on'); b[i].classList.remove('on');
+      i = (i + 1) % s.length;
+      s[i].classList.add('on'); void b[i].offsetWidth; b[i].classList.add('on');
+    }, 6000);
+    /* 히어로 제목 두 줄 양끝 맞춤: 짧은 줄의 자간을 넓혀 긴 줄 폭에 맞춘다 */
+    function fit() {
+      var h = document.querySelector('.bx-fit'); if (!h) return;
+      var a = h.querySelector('.l1'), c = h.querySelector('.l2');
+      a.style.letterSpacing = ''; c.style.letterSpacing = '';
+      var wa = a.getBoundingClientRect().width, wc = c.getBoundingClientRect().width;
+      var s = wa < wc ? a : c, n = s.textContent.length, d = Math.abs(wa - wc);
+      var base = parseFloat(getComputedStyle(s).letterSpacing) || 0;
+      s.style.letterSpacing = (base + d / n) + 'px';
+      /* 마지막 글자 뒤 자간만큼 오른쪽이 남으므로 한 번 더 보정 */
+      var w2 = s.getBoundingClientRect().width, wl = Math.max(wa, wc);
+      if (w2 > wl) s.style.letterSpacing = (base + (d - (w2 - wl)) / (n - 1)) + 'px';
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    window.addEventListener('load', fit); window.addEventListener('resize', fit); fit();
+    var els = document.querySelectorAll('.bx-r');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('on'); }); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
+<!-- ══ /BRAND BLOCK v3.1 ══ -->
+
+
   <!-- ══ 02. 객단가 ══ -->
-  <section class="unitprice" style="background:var(--bg-white);padding:0;">
+  <section class="unitprice" id="unitprice" style="background:var(--bg-white);padding:0;">
 
     <!-- 풀블리드 이미지 + 텍스트 오버레이 -->
     <div style="position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;max-height:520px;">
@@ -4325,7 +4677,7 @@
         <div class="sales-card">
           <div class="sales-card-loc">서울 Y점</div>
           <div class="sales-card-amt">₩1,599,800</div>
-          <div class="sales-card-desc">5년째 고매출 매장</div>
+          <div class="sales-card-desc">15평 고매출 매장</div>
           <div class="sales-card-type">일 매출</div>
           <div class="sales-card-date">25년 7월 기준</div>
         </div>
@@ -4380,7 +4732,7 @@
         <div class="sales-card big">
           <div class="sales-card-loc">서울 Y점 · 연 매출</div>
           <div class="sales-card-amt">₩456,497,450</div>
-          <div class="sales-card-desc">15평에서 1년간 4억 달성</div>
+          <div class="sales-card-desc">15평 매장 · 2023년 1년간 4억 달성</div>
           <div class="sales-card-date">2023년 연매출</div>
         </div>
 
@@ -4417,80 +4769,6 @@
   </section>
 
   <div class="divider"></div>
-
-  <!-- ══ 05. 최대매출구조 ══ -->
-  <section class="strength">
-    <div class="wrap">
-      <div class="eyebrow">최대매출구조</div>
-      <h2 class="section-title">매일 먹어도 맛있는,<br>커피와 샌드위치</h2>
-
-      <!-- 1 -->
-      <div class="strength-item stacked reveal">
-        <div>
-          <div class="strength-num">01 — 365일 하루 3번 먹는 메뉴</div>
-          <h3 class="strength-title" style="white-space:nowrap;">커피 &amp; 샌드위치, 끊이지 않는 선택</h3>
-          <p class="strength-desc">트렌디한 메뉴와 다양한 음료. 자발적인 입소문이 나는 메뉴 구성으로 매일 찾아오게 만듭니다. 포장·배달·테이크아웃으로 매출 극대화.</p>
-        </div>
-        <div class="strength-img-grid">
-          <div class="strength-img">
-            <img
-              src="https://cafegate-homepage.vercel.app/_next/image?url=%2Fimages%2Ffranchise%2Fcg_fran_02.jpg&w=828&q=75"
-              alt="카페게이트 커피" loading="lazy">
-          </div>
-          <div class="strength-img">
-            <img
-              src="https://cafegate-homepage.vercel.app/_next/image?url=%2Fimages%2Ffranchise%2Fcg_fran_03.jpg&w=828&q=75"
-              alt="카페게이트 샌드위치" loading="lazy">
-          </div>
-          <div class="strength-img">
-            <img src="./bagel_sandwich.png" alt="베이글 샌드위치" loading="lazy">
-          </div>
-        </div>
-      </div>
-
-      <!-- 2 스페셜티 원두 & 시그니처 라떼 -->
-      <div class="strength-item stacked reveal">
-        <div>
-          <div class="strength-num">02 — 스페셜티 원두 &amp; 시그니처 라떼</div>
-          <h3 class="strength-title" style="white-space:nowrap;">타협없는 퀄리티, 커피 경쟁력의 두 기둥</h3>
-          <p class="strength-desc">BSCA 등급의 스페셜티 원두와 게이트만의 시그니처 크림 라떼.<br>안정된 품질과 스테디셀러 메뉴로 매일 매출을 만들어냅니다.</p>
-        </div>
-        <div class="strength-duo">
-          <div class="strength-duo-item">
-            <div class="strength-duo-img">
-              <img
-                src="https://cafegate-homepage.vercel.app/_next/image?url=%2Fimages%2Ffranchise%2Fspecialty_coffee_left.png&w=1200&q=75"
-                alt="스페셜티 원두" loading="lazy">
-            </div>
-            <h4 class="strength-duo-title">고품질 스페셜티 원두</h4>
-            <p class="strength-duo-desc">BSCA 등급의 스페셜티 원두. 한국인이 좋아하는 바디감과 산미, 밸런스가 좋은 원두로 안정된 품질과 고객에게 사랑받는 커피의 퀄리티입니다.
-            </p>
-          </div>
-          <div class="strength-duo-item">
-            <div class="strength-duo-img">
-              <img src="./latte_signature.png" alt="시그니처 라떼" loading="lazy">
-            </div>
-            <h4 class="strength-duo-title">1분에 1잔씩 팔리는 스테디셀러</h4>
-            <p class="strength-duo-desc">베이커리와의 조화를 최대치로 끌어올릴 수 있게 블렌딩한 올데이라떼와 시그니처 크림으로 만든 게이트만의 스페셜라떼로 매출 UP!</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3 -->
-      <div class="strength-item reveal">
-        <div>
-          <div class="strength-num">03 — 포장·배달·테이크아웃</div>
-          <h3 class="strength-title" style="white-space:nowrap;">모든 채널로 매출 극대화</h3>
-          <p class="strength-desc">커피 한 잔과 함께 샌드위치 포장주문도 UP! 주말 아침 브런치, 평일 저녁 가벼운 식사로 끊임없는 배달 주문이 이어집니다.</p>
-        </div>
-        <div class="strength-img" style="aspect-ratio:4/3;border-radius:6px;">
-          <img
-            src="https://cafegate-homepage.vercel.app/_next/image?url=%2Fimages%2Ffranchise%2Fcg_fran_07.png&w=3840&q=75"
-            alt="배달 포장" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ══ 06. 수익 구조 비교 ══ -->
   <section class="profit" id="profit">
@@ -5332,31 +5610,6 @@
   </div>
 
   <script>
-    /* 배경 이미지 슬라이드쇼 */
-    let bgIdx = 0;
-    const bgSlides = document.querySelectorAll('.hero-bg-slide');
-    function bgNext() {
-      bgSlides[bgIdx].classList.remove('active');
-      bgIdx = (bgIdx + 1) % bgSlides.length;
-      bgSlides[bgIdx].classList.add('active');
-    }
-    setInterval(bgNext, 5000);
-
-    /* 히어로 슬라이드 */
-    let heroIdx = 0;
-    const heroTotal = 2;
-    let heroTimer;
-
-    function heroGoTo(idx) {
-      heroIdx = idx;
-      document.getElementById('heroTrack').style.transform = `translateX(-${idx * 50}%)`;
-      document.querySelectorAll('.hero-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
-      clearInterval(heroTimer);
-      heroTimer = setInterval(heroNext, 4500);
-    }
-    function heroNext() { heroGoTo((heroIdx + 1) % heroTotal); }
-    heroTimer = setInterval(heroNext, 4500);
-
     /* 탭 전환 */
     function switchTab(idx) {
       document.querySelectorAll('.s-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
