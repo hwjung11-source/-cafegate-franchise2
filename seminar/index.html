@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>카페게이트 창업설명회</title>
+<!-- 창업설명회 페이지 v1 (261104) — 아임웹 /seminar 에 iframe 으로 삽입. 신청 폼은 아임웹 폼 위젯(아래)을 그대로 사용 -->
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" rel="stylesheet">
+<style>
+  :root { --cr:#F6F0EA; --ink:#1B1612; --sub:#5E554E; --pk:#FF9B9B; --pt:#EC6B75; --wk:#17110D; --ln:#E2D5CB; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic Neo',sans-serif; color:var(--ink); background:var(--cr); letter-spacing:-.02em; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  .w { max-width:1120px; margin:0 auto; padding:0 48px; }
+  .lb { font-size:12px; font-weight:600; letter-spacing:.32em; text-transform:uppercase; color:var(--pt); margin-bottom:24px; }
+  h2 { font-size:clamp(30px,3.8vw,50px); font-weight:300; letter-spacing:-.045em; line-height:1.32; word-break:keep-all; }
+  h2 b { font-weight:700; }
+  .r { opacity:0; transform:translateY(30px); transition:opacity 1s ease, transform 1s cubic-bezier(.2,.7,.2,1); }
+  .r.on { opacity:1; transform:none; }
+  .d1 { transition-delay:.12s; } .d2 { transition-delay:.24s; } .d3 { transition-delay:.36s; }
+  .pill { display:inline-flex; align-items:center; gap:8px; height:54px; padding:0 30px; border-radius:999px; background:var(--ink); color:#fff; font-size:16px; font-weight:700; cursor:pointer; border:0; font-family:inherit; }
+  .pill.wh { background:#fff; color:var(--ink); }
+  .pill i { font-style:normal; color:var(--pk); }
+
+  /* HERO */
+  .hero { position:relative; min-height:min(92vh,860px); color:#fff; background:url('../brand/mood_store.jpg') center/cover; overflow:hidden; }
+  .hero::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(23,17,13,.82) 0%,rgba(23,17,13,.55) 50%,rgba(23,17,13,.25) 100%); }
+  .hero .w { position:relative; z-index:1; min-height:min(92vh,860px); display:flex; flex-direction:column; justify-content:center; padding-top:100px; padding-bottom:90px; }
+  .hero .lb { color:var(--pk); }
+  .hero h1 { font-size:clamp(42px,6vw,80px); font-weight:600; letter-spacing:-.05em; line-height:1.15; word-break:keep-all; }
+  .hero h1 em { font-style:normal; color:var(--pk); }
+  .hero p { margin-top:26px; font-size:clamp(16px,1.5vw,19px); line-height:1.8; color:rgba(255,255,255,.86); word-break:keep-all; }
+  .next { margin-top:40px; display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+  .next span.k { font-size:13px; font-weight:600; color:rgba(255,255,255,.7); margin-right:6px; }
+  .next b { display:inline-flex; align-items:baseline; gap:4px; padding:9px 16px; border:1px solid rgba(255,255,255,.35); border-radius:999px; font-size:16px; font-weight:600; }
+  .next b small { font-size:12px; font-weight:400; color:rgba(255,255,255,.75); }
+  .hero .pill { margin-top:34px; align-self:flex-start; }
+
+  .hb { margin-top:26px; display:inline-flex; flex-wrap:wrap; align-items:baseline; gap:6px 12px; padding:14px 20px; border-radius:14px; background:rgba(255,155,155,.16); border:1px solid rgba(255,155,155,.45); align-self:flex-start; }
+  .hb b { font-size:15px; font-weight:700; color:#fff; }
+  .hb span { font-size:24px; font-weight:700; color:var(--pk); letter-spacing:-.03em; }
+  .hb small { flex-basis:100%; font-size:12px; color:rgba(255,255,255,.62); }
+
+  /* GET */
+  .get { padding:130px 0 40px; }
+  .get-head { text-align:center; margin-bottom:50px; }
+  .get-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .gc { background:#fff; border-radius:20px; padding:38px 38px 34px; }
+  .gc.pk { background:var(--wk); color:#fff; }
+  .gc-top { display:flex; align-items:center; gap:18px; padding-bottom:22px; border-bottom:1px solid #EFE6DD; margin-bottom:6px; }
+  .gc.pk .gc-top { border-color:rgba(255,255,255,.14); }
+  .gc-i { flex:none; width:58px; height:58px; border-radius:50%; background:#FBEDEC; display:flex; align-items:center; justify-content:center; }
+  .gc-i svg { width:28px; height:28px; fill:none; stroke:var(--pt); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+  .gc.pk .gc-i { background:rgba(255,155,155,.14); }
+  .gc.pk .gc-i svg { stroke:var(--pk); }
+  .gc-k { font-size:24px; font-weight:700; letter-spacing:-.04em; }
+  .gc-s { margin-top:4px; font-size:14px; color:var(--sub); }
+  .gc.pk .gc-s { color:rgba(255,255,255,.6); }
+  .gc ul { list-style:none; }
+  .gc li { display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:13px 0 13px 28px; position:relative; border-bottom:1px solid #F3ECE6; font-size:16px; }
+  .gc.pk li { border-color:rgba(255,255,255,.08); }
+  .gc li::before { content:''; position:absolute; left:0; top:16px; width:18px; height:18px; border-radius:50%; background:var(--pt) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/11px no-repeat; }
+  .gc.pk li::before { background-color:var(--pk); }
+  .gc li b { font-weight:700; word-break:keep-all; }
+  .gc li span { font-size:13.5px; color:var(--sub); text-align:right; word-break:keep-all; }
+  .gc li em { font-style:normal; font-weight:700; color:var(--pk); white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .gc-tot { margin-top:20px; display:flex; justify-content:space-between; align-items:baseline; }
+  .gc-tot span { font-size:15px; font-weight:700; }
+  .gc-tot b { font-size:46px; font-weight:700; letter-spacing:-.05em; color:var(--pk); line-height:1; }
+  .gc-tot b small { font-size:.4em; font-weight:500; margin-left:2px; }
+  .gc-note { margin-top:14px; font-size:12px; line-height:1.65; color:rgba(255,255,255,.5); word-break:keep-all; }
+
+  /* WORRY */
+  .worry { padding:110px 0 120px; }
+  .worry-head { display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-bottom:56px; }
+  .worry-head p { max-width:380px; font-size:16px; line-height:1.85; color:var(--sub); word-break:keep-all; }
+  .qs { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .q { background:#fff; border-radius:14px; padding:30px 26px 32px; }
+  .q-n { font-size:13px; font-weight:700; color:var(--pt); margin-bottom:18px; }
+  .q-t { font-size:20px; font-weight:700; letter-spacing:-.04em; line-height:1.4; margin-bottom:12px; word-break:keep-all; }
+  .q-d { font-size:14.5px; line-height:1.75; color:var(--sub); word-break:keep-all; }
+  .for { margin-top:56px; padding-top:40px; border-top:1px solid var(--ln); display:grid; grid-template-columns:220px 1fr; gap:30px; }
+  .for h3 { font-size:20px; font-weight:700; letter-spacing:-.04em; line-height:1.4; }
+  .for ul { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:14px 40px; }
+  .for li { position:relative; padding-left:22px; font-size:16px; line-height:1.6; color:var(--ink); word-break:keep-all; }
+  .for li::before { content:''; position:absolute; left:0; top:9px; width:10px; height:2px; background:var(--pt); }
+
+  /* PROGRAM */
+  .prog { background:var(--wk); color:#fff; padding:130px 0; }
+  .prog .lb { color:var(--pk); }
+  .prog-head { display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-bottom:60px; }
+  .prog-head p { max-width:380px; font-size:16px; line-height:1.85; color:rgba(255,255,255,.62); word-break:keep-all; }
+  .flow { display:grid; grid-template-columns:3fr 1fr 2fr; gap:14px; margin-bottom:14px; }
+  .ph { display:flex; align-items:center; gap:12px; font-size:13px; font-weight:700; color:var(--pk); letter-spacing:.06em; }
+  .ph i { flex:1; height:1px; background:linear-gradient(90deg,rgba(255,155,155,.6),rgba(255,155,155,0)); }
+  .steps { display:grid; grid-template-columns:repeat(6,1fr); gap:14px; }
+  .st { background:#231B16; border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:28px 22px 30px; }
+  .st[data-ph="2"] { background:#2B1F1C; border-color:rgba(255,155,155,.25); }
+  .ic { width:60px; height:60px; border-radius:50%; background:rgba(255,155,155,.12); display:flex; align-items:center; justify-content:center; margin-bottom:24px; }
+  .ic svg { width:30px; height:30px; fill:none; stroke:var(--pk); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+  .st-n { font-size:11px; font-weight:700; letter-spacing:.18em; color:rgba(255,255,255,.45); margin-bottom:10px; }
+  .st-t { font-size:18px; font-weight:700; letter-spacing:-.04em; line-height:1.35; margin-bottom:10px; word-break:keep-all; }
+  .st-d { font-size:14px; line-height:1.7; color:rgba(255,255,255,.62); word-break:keep-all; }
+
+  .st-l { list-style:none; margin-top:4px; }
+  .st-l li { position:relative; padding:7px 0 7px 16px; font-size:14px; line-height:1.45; color:rgba(255,255,255,.72); border-top:1px solid rgba(255,255,255,.08); word-break:keep-all; }
+  .st-l li::before { content:''; position:absolute; left:0; top:14px; width:6px; height:6px; border-radius:50%; background:var(--pk); }
+  .take { margin-top:70px; display:grid; grid-template-columns:280px 1fr; gap:40px; align-items:start; padding-top:56px; border-top:1px solid rgba(255,255,255,.14); }
+  .take h3 { font-size:28px; font-weight:300; letter-spacing:-.045em; line-height:1.35; }
+  .take h3 b { font-weight:700; color:var(--pk); }
+  .take ul { list-style:none; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .take li { background:rgba(255,255,255,.06); border-radius:12px; padding:18px 18px 18px 50px; position:relative; font-size:15.5px; font-weight:600; line-height:1.45; word-break:keep-all; }
+  .take li::before { content:''; position:absolute; left:18px; top:20px; width:20px; height:20px; border-radius:50%; background:var(--pk) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2317110D' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/12px no-repeat; }
+  .take li small { display:block; margin-top:4px; font-size:13px; font-weight:400; color:rgba(255,255,255,.55); }
+
+  /* BENEFIT */
+  .ben { padding:140px 0 120px; }
+  .ben-head { text-align:center; margin-bottom:56px; }
+  .ben-head .lb { margin-bottom:20px; }
+  .ben-head .until { display:inline-block; margin-bottom:22px; padding:8px 16px; border-radius:999px; background:var(--ink); color:#fff; font-size:13px; font-weight:600; }
+  .ben-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .card { background:#fff; border-radius:18px; padding:40px 40px 36px; }
+  .card-k { font-size:13px; font-weight:700; color:var(--pt); letter-spacing:.04em; margin-bottom:16px; }
+  .cost { display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; }
+  .cost s { font-size:22px; color:#A39A93; font-weight:500; }
+  .cost b { font-size:56px; font-weight:700; letter-spacing:-.05em; line-height:1; }
+  .cost b small, .tot b small { font-size:.4em; font-weight:500; margin-left:2px; }
+  .card-s { margin-top:10px; font-size:14px; color:var(--sub); }
+  .rows { margin-top:28px; border-top:1px solid #EFE6DD; }
+  .row { display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:13px 0; border-bottom:1px solid #EFE6DD; font-size:15.5px; }
+  .row span { color:var(--sub); word-break:keep-all; }
+  .row span b { color:var(--ink); font-weight:700; margin-right:6px; }
+  .row em { font-style:normal; font-weight:700; white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .row em.pt { color:var(--pt); }
+  .tot { margin-top:22px; display:flex; justify-content:space-between; align-items:baseline; }
+  .tot span { font-size:15px; font-weight:700; }
+  .tot b { font-size:44px; font-weight:700; letter-spacing:-.05em; color:var(--pt); line-height:1; }
+  .note { margin-top:18px; font-size:12.5px; line-height:1.7; color:#8A7F77; word-break:keep-all; }
+  .ben-foot { margin-top:30px; display:flex; justify-content:center; gap:12px; flex-wrap:wrap; }
+  .lnk { display:inline-flex; align-items:center; height:54px; padding:0 26px; border-radius:999px; border:1.5px solid var(--ink); font-size:15px; font-weight:700; }
+
+  /* VIDEO */
+  .vid { background:#fff; padding:130px 0; }
+  .vid-head { margin-bottom:50px; }
+  .vids { display:grid; grid-template-columns:1fr 1fr; gap:36px 24px; }
+  .v-fr { position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden; background:#000; }
+  .v-fr iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .v-t { margin-top:16px; font-size:17px; font-weight:700; letter-spacing:-.03em; }
+  .v-d { margin-top:6px; font-size:14px; color:var(--sub); }
+
+  /* INFO + CLOSING */
+  .info { padding:130px 0 120px; }
+  .info-grid { display:grid; grid-template-columns:1.25fr 1fr; gap:70px; align-items:start; }
+  .sch { background:#fff; border-radius:16px; padding:8px 30px; }
+  .mo { display:flex; align-items:center; padding:20px 0; }
+  .mo + .mo { border-top:1px solid #EFE6DD; }
+  .mo em { font-style:normal; width:84px; font-size:17px; font-weight:700; color:var(--pt); }
+  .ds { flex:1; display:grid; grid-template-columns:1fr 1fr; }
+  .ds div { display:flex; align-items:baseline; gap:3px; }
+  .ds b { min-width:42px; text-align:right; font-size:36px; font-weight:700; letter-spacing:-.04em; line-height:1; font-variant-numeric:tabular-nums; }
+  .ds span { font-size:14px; color:var(--sub); }
+  .tix { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .tk { position:relative; background:#fff; border-radius:14px; padding:22px 22px 20px; border:1.5px solid transparent; }
+  .tk::before, .tk::after { content:''; position:absolute; top:62%; width:16px; height:16px; border-radius:50%; background:var(--cr); }
+  .tk::before { left:-9px; } .tk::after { right:-9px; }
+  .tk-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+  .tk-m { font-size:13px; font-weight:700; color:var(--pt); letter-spacing:.06em; }
+  .tk-tag { font-size:11.5px; font-weight:700; padding:4px 9px; border-radius:999px; background:#F3ECE6; color:var(--sub); }
+  .tk-d { display:flex; align-items:baseline; gap:6px; }
+  .tk-d b { font-size:46px; font-weight:700; letter-spacing:-.05em; line-height:1; font-variant-numeric:tabular-nums; }
+  .tk-d span { font-size:16px; font-weight:600; }
+  .tk-b { margin-top:16px; padding-top:13px; border-top:1.5px dashed #E6DBD2; display:flex; justify-content:space-between; font-size:13.5px; color:var(--sub); }
+  .tk.next1 { border-color:var(--ink); }
+  .tk.next1 .tk-tag { background:var(--ink); color:#fff; }
+  .tk.past { opacity:.45; }
+  .tk.past .tk-d b { text-decoration:line-through; text-decoration-thickness:2px; }
+  .meta { margin-top:22px; font-size:15px; line-height:2; color:var(--sub); }
+  .meta b { color:var(--ink); margin-right:10px; }
+  .close h2 { margin-bottom:22px; }
+  .close p { font-size:17px; line-height:1.9; color:var(--sub); word-break:keep-all; margin-bottom:34px; }
+
+  @media (max-width:900px) {
+    .w { padding:0 22px; }
+    .hero { height:auto; min-height:600px; }
+    .hero::after { background:linear-gradient(0deg,rgba(23,17,13,.88) 0%,rgba(23,17,13,.6) 60%,rgba(23,17,13,.35) 100%); }
+    .hero .w { justify-content:flex-end; padding:110px 22px 64px; min-height:600px; }
+    .next b { font-size:14px; padding:7px 12px; }
+    .pill { height:50px; padding:0 24px; font-size:15px; }
+    .get { padding:84px 0 20px; }
+    .get-head { margin-bottom:32px; }
+    .get-grid { grid-template-columns:1fr; gap:12px; }
+    .gc { padding:26px 20px 24px; }
+    .gc-i { width:48px; height:48px; }
+    .gc-i svg { width:24px; height:24px; }
+    .gc-k { font-size:20px; }
+    .gc li { font-size:14.5px; flex-direction:column; gap:2px; }
+    .gc li span { text-align:left; }
+    .gc.pk li { flex-direction:row; }
+    .gc-tot b { font-size:38px; }
+    .hb span { font-size:20px; }
+    .worry, .ben, .info { padding:84px 0 76px; }
+    .prog, .vid { padding:84px 0; }
+    .worry-head, .prog-head { flex-direction:column; align-items:flex-start; gap:14px; margin-bottom:36px; }
+    .qs { grid-template-columns:1fr 1fr; gap:10px; }
+    .q { padding:22px 18px; }
+    .q-t { font-size:17px; }
+    .q-d { font-size:13.5px; }
+    .for { grid-template-columns:1fr; gap:18px; }
+    .for ul { grid-template-columns:1fr; gap:10px; }
+    .for li { font-size:15px; }
+    .flow { display:none; }
+    .steps { grid-template-columns:1fr 1fr; gap:10px; }
+    .st { padding:20px 16px 22px; }
+    .ic { width:48px; height:48px; margin-bottom:16px; }
+    .ic svg { width:24px; height:24px; }
+    .st-t { font-size:16px; }
+    .st-l li { font-size:12.5px; }
+    .take { grid-template-columns:1fr; gap:22px; margin-top:50px; padding-top:40px; }
+    .take h3 { font-size:23px; }
+    .take ul { grid-template-columns:1fr; gap:8px; }
+    .ben-grid, .vids, .info-grid { grid-template-columns:1fr; }
+    .info-grid { gap:50px; }
+    .card { padding:28px 22px 26px; }
+    .cost b { font-size:44px; }
+    .tot b { font-size:36px; }
+    .row { font-size:14px; }
+    .tix { gap:10px; }
+    .tk { padding:18px 16px 16px; }
+    .tk-d b { font-size:38px; }
+    .tk-b { font-size:12.5px; }
+    .mo em { width:64px; font-size:15px; }
+    .ds b { font-size:30px; min-width:36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="w">
+    <div class="lb r">Franchise Seminar 2026</div>
+    <h1 class="r d1">카페 창업,<br>감이 아니라 <em>구조</em>로<br>결정하세요.</h1>
+    <p class="r d2">잘 되는 매장의 운영 노하우부터 창업 혜택까지, 본사가 직접 알려드립니다.<br>매출 구조와 운영 데이터를 숫자로 보고 결정하세요.</p>
+    <div class="next r d3" id="next"><span class="k">다음 설명회</span></div>
+    <div class="hb r d3"><b>7가지 창업 혜택</b><span>최대 −9,850만원*</span><small>2026.12.31 가맹계약까지 · *할인 + 금융 지원(상환 필요) 합계</small></div>
+    <button class="pill wh r d3" onclick="goForm()">설명회 신청하기 <i>›</i></button>
+  </div>
+</section>
+
+<!-- GET : 설명회에서 가져가는 것 -->
+<section class="get">
+  <div class="w">
+    <div class="get-head">
+      <div class="lb r">What You Get</div>
+      <h2 class="r d1">설명회에 오시면,<br><b>이만큼 가져가십니다.</b></h2>
+    </div>
+    <div class="get-grid">
+      <div class="gc r">
+        <div class="gc-top"><span class="gc-i"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5"/><path d="M8 7h8M8 10.5h6"/></svg></span><div><div class="gc-k">실전 정보 6가지</div><div class="gc-s">온라인에서는 얻기 어려운 매장 운영 정보</div></div></div>
+        <ul>
+          <li><b>본사·브랜드 강점</b><span>원두·메뉴·인증</span></li>
+          <li><b>잘 되는 매장의 운영 노하우</b><span>현장에서 검증한 운영 원칙</span></li>
+          <li><b>내 평수의 개설비용</b><span>항목별 정상가와 할인 적용가</span></li>
+          <li><b>받을 수 있는 지원 조건</b><span>할인·무이자 분할·카드·대출</span></li>
+          <li><b>계약 전 체크포인트</b><span>비용·입지·손익</span></li>
+          <li><b>내 후보지 상권 의견</b><span>1:1 상담에서 함께 검토</span></li>
+        </ul>
+      </div>
+      <div class="gc pk r d1">
+        <div class="gc-top"><span class="gc-i"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9"/><path d="M12 8v13"/><path d="M12 8c-2-3-6-3-6-.5S10 8 12 8zM12 8c2-3 6-3 6-.5S14 8 12 8z"/></svg></span><div><div class="gc-k">창업 혜택 7가지</div><div class="gc-s">2026년 12월 31일까지 가맹계약 시</div></div></div>
+        <ul>
+          <li><b>가맹비 전액 면제</b><em>500만원</em></li>
+          <li><b>교육비 할인</b><em>150만원</em></li>
+          <li><b>초기 마케팅 할인</b><em>200만원</em></li>
+          <li><b>주방설비 할인</b><em>400만원</em></li>
+          <li><b>본사 36개월 무이자 분할</b><em>3,600만원</em></li>
+          <li><b>삼성카드 무이자 할부</b><em>2,000만원</em></li>
+          <li><b>하나은행 창업 대출</b><em>3,000만원</em></li>
+        </ul>
+        <div class="gc-tot"><span>최대 지원 합계</span><b>9,850<small>만원</small></b></div>
+        <p class="gc-note">본사 분할·카드 할부·은행 대출은 상환이 필요한 금융 지원이며, 대출 한도는 금융기관 심사에 따라 달라집니다. VAT 별도.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORRY -->
+<section class="worry">
+  <div class="w">
+    <div class="worry-head">
+      <div>
+        <div class="lb r">Before You Start</div>
+        <h2 class="r d1">이런 고민,<br><b>설명회에서 답해드립니다.</b></h2>
+      </div>
+      <p class="r d2">블로그와 유튜브만으로는 내 상황에 맞는 답을 찾기 어렵습니다. 실제 운영 중인 매장의 구조와 숫자로 하나씩 설명합니다.</p>
+    </div>
+    <div class="qs">
+      <div class="q r"><div class="q-n">Q1. 비용</div><div class="q-t">창업 비용,<br>정확히 얼마일까?</div><p class="q-d">평수별 개설비용과 할인·금융 지원을 항목별로 보여드립니다.</p></div>
+      <div class="q r d1"><div class="q-n">Q2. 수익</div><div class="q-t">커피만 팔아서<br>남을까?</div><p class="q-d">커피에 샌드위치·분식을 더해 객단가를 높이는 구조를 설명합니다.</p></div>
+      <div class="q r d2"><div class="q-n">Q3. 입지</div><div class="q-t">내가 본 자리,<br>괜찮을까?</div><p class="q-d">후보지를 가져오시면 1:1 상담에서 상권을 함께 봅니다.</p></div>
+      <div class="q r d3"><div class="q-n">Q4. 선택</div><div class="q-t">개인 창업과 프랜차이즈,<br>무엇이 나을까?</div><p class="q-d">메뉴 개발·교육·물류·마케팅까지 본사가 맡는 범위를 설명합니다.</p></div>
+    </div>
+    <div class="for r">
+      <h3>이런 분께<br>추천합니다</h3>
+      <ul>
+        <li>수익 구조가 현실적인지 직접 확인하고 싶은 분</li>
+        <li>회사를 그만두고 창업을 진지하게 고민 중인 분</li>
+        <li>온라인 정보만으로는 결정이 어려운 분</li>
+        <li>카페 창업을 생각하지만 아직 감이 잡히지 않는 분</li>
+        <li>프랜차이즈 계약 전 현실적인 정보가 필요한 분</li>
+        <li>지금 운영 중인 매장의 업종 전환을 고민하는 분</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="prog">
+  <div class="w">
+    <div class="prog-head">
+      <div>
+        <div class="lb r">Program</div>
+        <h2 class="r d1">현장에서 바로 쓰는 노하우,<br><b>이렇게 알려드립니다.</b></h2>
+      </div>
+      <p class="r d2">본사·브랜드 강점과 운영 노하우부터 메뉴 시식, 1:1 상담까지 6단계. 창업을 결정하기 전에 꼭 필요한 정보만 담았습니다.</p>
+    </div>
+    <div class="flow r">
+      <div class="ph"><span>브랜드 · 노하우</span><i></i></div><div class="ph"><span>맛보기</span><i></i></div><div class="ph"><span>상담</span><i></i></div>
+    </div>
+    <div class="steps">
+      <div class="st r" data-ph="1"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 10v10h16V10"/><path d="M3 10l2-6h14l2 6"/><path d="M3 10c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3"/><path d="M10 20v-5h4v5"/></svg></div><div class="st-n">STEP 01</div><div class="st-t">카페게이트<br>본사·브랜드 강점</div><p class="st-d">원두부터 메뉴, 인증까지. 카페게이트를 선택하는 이유</p></div>
+      <div class="st r d1" data-ph="1"><div class="ic"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/><path d="M12 7v3l2 1"/></svg></div><div class="st-n">STEP 02</div><div class="st-t">잘 되는 매장의<br>운영 노하우</div><p class="st-d">잘 되는 매장들이 공통으로 지키는 운영 원칙</p></div>
+      <div class="st r d2" data-ph="1"><div class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v2h6V3"/><path d="M8.5 11l1.5 1.5 3-3"/><path d="M8.5 16.5h7"/></svg></div><div class="st-n">STEP 03</div><div class="st-t">계약 전<br>체크포인트</div><p class="st-d">비용·입지·손익, 계약 전에 꼭 확인할 것</p></div>
+      <div class="st r" data-ph="2"><div class="ic"><svg viewBox="0 0 24 24"><path d="M5 8h11v6a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V8z"/><path d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 3c0 1 1 1 1 2s-1 1-1 2M12 3c0 1 1 1 1 2s-1 1-1 2"/></svg></div><div class="st-n">STEP 04</div><div class="st-t">대표 메뉴 시식</div><p class="st-d">대표 메뉴를 직접 맛보고 판단하세요</p></div>
+      <div class="st r d1" data-ph="3"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h11v8H8l-4 3V5z"/><path d="M15 9h5v8l-3-2h-6v-2"/><path d="M8 8.2a1.6 1.6 0 1 1 1.6 1.6V11"/></svg></div><div class="st-n">STEP 05</div><div class="st-t">창업 고민 Q&amp;A</div><p class="st-d">궁금한 점을 담당자가 바로 답해드립니다</p></div>
+      <div class="st r d2" data-ph="3"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M3 20c0-3 2.2-5 5-5s5 2 5 5"/><path d="M11 20c0-3 2.2-5 5-5s5 2 5 5"/></svg></div><div class="st-n">STEP 06</div><div class="st-t">1:1 심층 상담</div><p class="st-d">희망 지역과 예산에 맞춘 개별 상담</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFIT -->
+<section class="ben">
+  <div class="w">
+    <div class="ben-head">
+      <div class="lb r">Benefit</div>
+      <div class="until r d1">2026년 12월 31일까지 가맹계약 시</div>
+      <h2 class="r d1">개설비는 낮추고,<br><b>시작은 가볍게.</b></h2>
+    </div>
+    <div class="ben-grid">
+      <div class="card r">
+        <div class="card-k">개설비용 할인 · 8평 기준</div>
+        <div class="cost"><s>7,500만원</s><b>6,250<small>만원</small></b></div>
+        <p class="card-s">항목별 할인 합계 −1,250만원</p>
+        <div class="rows">
+          <div class="row"><span><b>가맹비</b>전액 면제</span><em class="pt">−500만원</em></div>
+          <div class="row"><span><b>교육비</b>500 → 350만원</span><em class="pt">−150만원</em></div>
+          <div class="row"><span><b>초기 마케팅</b>400 → 200만원</span><em class="pt">−200만원</em></div>
+          <div class="row"><span><b>주방설비</b>3,300 → 2,900만원</span><em class="pt">−400만원</em></div>
+        </div>
+      </div>
+      <div class="card r d1">
+        <div class="card-k">창업 지원 합계 · 할인 + 금융 지원</div>
+        <div class="rows" style="margin-top:0;border-top:0;">
+          <div class="row"><span><b>할인</b>가맹비·교육·마케팅·설비</span><em>−1,250만원</em></div>
+          <div class="row"><span><b>본사</b>36개월 무이자 분할</span><em>−3,600만원</em></div>
+          <div class="row"><span><b>삼성카드</b>무이자 할부</span><em>−2,000만원</em></div>
+          <div class="row"><span><b>하나은행</b>창업 대출</span><em>−3,000만원</em></div>
+        </div>
+        <div class="tot"><span>최대</span><b>−9,850<small>만원</small></b></div>
+        <p class="note">VAT 별도. 본사 분할·카드 할부·은행 대출은 상환이 필요한 금융 지원이며, 대출 한도는 금융기관 심사에 따라 달라집니다.</p>
+      </div>
+    </div>
+    <div class="ben-foot r">
+      <a class="lnk" href="https://cafegate.co.kr/cost" target="_top">평수별 개설비용 자세히 보기 →</a>
+      <button class="pill" onclick="goForm()">설명회 신청하기 <i>›</i></button>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="vid">
+  <div class="w">
+    <div class="vid-head">
+      <div class="lb r">Owner Story</div>
+      <h2 class="r d1">설명회 전에,<br><b>먼저 시작한 점주님의 이야기.</b></h2>
+    </div>
+    <div class="vids">
+      <div class="r">
+        <div class="v-fr"><iframe src="https://www.youtube.com/embed/06TdCxScJFs" title="카페게이트 점주 인터뷰 1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="v-t">외식업을 거쳐 카페를 연 30대 사장님</div>
+        <p class="v-d">카페게이트TV · 휴먼스토리</p>
+      </div>
+      <div class="r d1">
+        <div class="v-fr"><iframe src="https://www.youtube.com/embed/PTWpo4YDAwU" title="카페게이트 점주 인터뷰 2" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="v-t">인사팀 과장에서 7평 카페 사장님으로</div>
+        <p class="v-d">카페게이트TV · 휴먼스토리</p>
+      </div>
+      <div class="r d2">
+        <div class="v-fr"><iframe src="https://www.youtube.com/embed/G17Zn5ul5Ms" title="카페게이트 점주 인터뷰 3" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="v-t">시골 동네에서 카페를 연 40대 사장님</div>
+        <p class="v-d">인생속으로 · 휴먼스토리</p>
+      </div>
+      <div class="r d3">
+        <div class="v-fr"><iframe src="https://www.youtube.com/embed/2iKogsf94zk" title="카페게이트 고려대역점 점주 인터뷰" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="v-t">편의점을 그만두고 카페를 연 고려대역점 사장님</div>
+        <p class="v-d">카페게이트TV · 휴먼스토리</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO + CLOSING -->
+<section class="info">
+  <div class="w info-grid">
+    <div>
+      <div class="lb r">Schedule</div>
+      <h2 class="r d1" style="font-size:clamp(26px,2.8vw,36px);margin-bottom:26px;">가까운 날짜를<br><b>골라 신청하세요.</b></h2>
+      <div class="tix r d1" id="tix"></div>
+      <div class="meta r d2">
+        <div><b>시간</b>오전 11시</div>
+        <div><b>장소</b>카페게이트 본사 2층 · 서울 마포구 고산길 23 노고산빌딩 (신촌)</div>
+        <div><b>신청</b>아래 신청서로 사전 신청</div>
+        <div><b>문의</b>1599-1067</div>
+      </div>
+    </div>
+    <div class="close">
+      <div class="lb r">For Your Start</div>
+      <h2 class="r d1">점주님의 성공이<br><b>브랜드의 성공이기 때문입니다.</b></h2>
+      <p class="r d2">계약을 서두르게 하지 않습니다. 충분히 듣고, 맛보고, 숫자를 확인한 뒤 결정하세요. 그 과정을 본사가 함께합니다.</p>
+      <button class="pill r d3" onclick="goForm()">설명회 신청하기 <i>›</i></button>
+    </div>
+  </div>
+</section>
+
+<script>
+  /* ▼ 설명회 일정 — 날짜만 여기서 고치면 상단·하단 모두 자동 반영 (지난 날짜는 '종료', 가장 가까운 날은 '다음 설명회') */
+  var SESSIONS = ['2026-11-04', '2026-11-18', '2026-12-09', '2026-12-23'];
+  var TIME = '오전 11시';
+  var START_HOUR = 11;   // 설명회 시작 시각 (이 시각이 지나면 '종료', 다음 날짜로 자동 이동)
+  (function () {
+    var W = ['일','월','화','수','목','금','토'];
+    var now = new Date();
+    var today = new Date(now); today.setHours(0,0,0,0);
+    var nextIdx = -1, t = '', n = '';
+    SESSIONS.forEach(function (d, i) {
+      var day = new Date(d + 'T00:00:00');
+      var start = new Date(day); start.setHours(START_HOUR, 0, 0, 0);
+      var past = now >= start;
+      var diff = Math.round((day - today) / 864e5);
+      if (!past && nextIdx < 0) nextIdx = i;
+      var isNext = i === nextIdx;
+      var tag = past ? '종료' : (diff === 0 ? '오늘' : 'D-' + diff);
+      if (isNext) tag = '다음 설명회 · ' + tag;
+      t += '<div class="tk' + (past ? ' past' : '') + (isNext ? ' next1' : '') + '"><div class="tk-top"><span class="tk-m">' + (day.getMonth()+1) + '월</span><span class="tk-tag">' + tag + '</span></div>'
+         + '<div class="tk-d"><b>' + day.getDate() + '</b><span>일 (' + W[day.getDay()] + ')</span></div>'
+         + '<div class="tk-b"><span>' + TIME + '</span><span>본사 2층</span></div></div>';
+      if (!past) n += '<b>' + (day.getMonth()+1) + '.' + ('0' + day.getDate()).slice(-2) + '<small>(' + W[day.getDay()] + ') ' + TIME.replace('오전 ','') + '</small></b>';
+    });
+    document.getElementById('tix').innerHTML = t;
+    document.getElementById('next').insertAdjacentHTML('beforeend', n || '<b>일정 준비 중</b>');
+  })();
+  /* 신청 버튼: 아임웹 부모 페이지의 신청 폼으로 스크롤 */
+  function goForm() {
+    if (window.parent !== window) window.parent.postMessage({ cgScroll: 'seminar-form' }, '*');
+  }
+  /* 스크롤 등장 효과 */
+  (function () {
+    var els = document.querySelectorAll('.r');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('on'); }); return; }
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+  /* 아임웹 iframe 높이 자동 맞춤 */
+  (function () {
+    if (window.parent === window) return;
+    var last = 0;
+    function send() { var h = Math.ceil(document.body.getBoundingClientRect().height); if (Math.abs(h - last) < 2) return; last = h; window.parent.postMessage({ height: h }, '*'); }
+    window.addEventListener('load', send); window.addEventListener('resize', send);
+    if (window.ResizeObserver) new ResizeObserver(send).observe(document.body);
+    setTimeout(send, 1500); setTimeout(send, 4000);
+  })();
+</script>
+</body>
+</html>
